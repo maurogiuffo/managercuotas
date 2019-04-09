@@ -1,0 +1,463 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Post",
+				"PostPolicy"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"storage",
+				"Storage"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"cate",
+				"category"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"l",
+				"li\tTag"
+			],
+			[
+				"u",
+				"ul\tTag"
+			],
+			[
+				"th",
+				"thead\tTag"
+			],
+			[
+				"c",
+				"class\tAttr"
+			],
+			[
+				"d",
+				"div\tTag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/Cliente.php",
+			"settings":
+			{
+				"buffer_size": 563,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/CuotaController.php",
+			"settings":
+			{
+				"buffer_size": 2477,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/ClienteController.php",
+			"settings":
+			{
+				"buffer_size": 2993,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Workspace/Cuotas",
+		"/D/Workspace/Cuotas/app",
+		"/D/Workspace/Cuotas/app/Http",
+		"/D/Workspace/Cuotas/app/Http/Controllers",
+		"/D/Workspace/Cuotas/database",
+		"/D/Workspace/Cuotas/database/migrations",
+		"/D/Workspace/Cuotas/database/seeds",
+		"/D/Workspace/Cuotas/public",
+		"/D/Workspace/Cuotas/resources"
+	],
+	"file_history":
+	[
+		"/D/Workspace/Cuotas/resources/views/clientes/index.blade.php",
+		"/D/Workspace/Cuotas/resources/views/layouts/app.blade.php",
+		"/D/Workspace/Cuotas/database/migrations/2019_04_07_024354_create_clientes_table.php",
+		"/D/Workspace/Cuotas/database/migrations/2019_04_07_042845_create_recibos_table.php",
+		"/D/Workspace/Cuotas/database/migrations/2019_04_07_025656_create_cuotas_table.php",
+		"/D/Workspace/Cuotas/app/Http/Controllers/Controller.php",
+		"/D/Workspace/Cuotas/app/Http/Controllers/ClienteController.php",
+		"/D/Workspace/Cuotas/app/Cuota.php",
+		"/D/Workspace/Cuotas/app/Recibo.php",
+		"/D/Workspace/Cuotas/app/Cliente.php",
+		"/D/Workspace/Cuotas/resources/views/clientes/show.blade.php",
+		"/D/Workspace/Cuotas/resources/views/clientes/create.blade.php",
+		"/D/Workspace/Cuotas/resources/views/clientes/edit.blade.php",
+		"/D/Workspace/Cuotas/app/Http/Controllers/CuotaController.php",
+		"/D/Workspace/Cuotas/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/D/Workspace/Cuotas/resources/views/welcome.blade.php",
+		"/D/Workspace/Cuotas/routes/web.php",
+		"/D/Workspace/Cuotas/app/User.php",
+		"/D/Workspace/Cuotas/app/Http/Controllers/RecibosController.php",
+		"/D/Workspace/Cuotas/.env",
+		"/D/Workspace/Cuotas/app/Providers/AppServiceProvider.php",
+		"/D/Workspace/Cuotas/database/migrations/2014_10_12_100000_create_password_resets_table.php",
+		"/D/Workspace/Cuotas/database/migrations/2019_04_07_025703_create_cuotas_table.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/posts/show.blade.php",
+		"/D/Workspace/bloglaravel/app/Policies/PostPolicy.php",
+		"/D/Workspace/bloglaravel/app/Providers/AppServiceProvider.php",
+		"/C/Users/mauro/Documents/test.sql",
+		"/C/Users/mauro/AppData/Roaming/Sublime Text 3/Packages/User/mysql.sublime-build",
+		"/D/Workspace/bloglaravel/resources/views/admin/categories/index.blade.php",
+		"/C/xampp/mysql/bin/mysql.exe",
+		"/D/Workspace/bloglaravel/resources/views/auth/register.blade.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/posts/index.blade.php",
+		"/D/Workspace/bloglaravel/app/Providers/AuthServiceProvider.php",
+		"/D/Workspace/bloglaravel/app/Http/Controllers/Admin/PostController.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/posts/edit.blade.php",
+		"/D/Workspace/bloglaravel/app/Http/Requests/PostUpdateRequest.php",
+		"/D/Workspace/bloglaravel/vendor/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/posts/create.blade.php",
+		"/D/Workspace/bloglaravel/app/post.php",
+		"/D/Workspace/bloglaravel/config/filesystems.php",
+		"/D/Workspace/bloglaravel/app/Http/Requests/PostStoreRequest.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/categories/edit.blade.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/categories/create.blade.php",
+		"/D/Workspace/bloglaravel/app/Http/Controllers/PostController.php",
+		"/D/Workspace/bloglaravel/resources/views/auth/login.blade.php",
+		"/D/Workspace/bloglaravel/resources/views/admin/categories/show.blade.php",
+		"/D/Workspace/bloglaravel/app/Http/Requests/CategoryStoreRequest.php",
+		"/D/Workspace/bloglaravel/app/Http/Controllers/Admin/CategoryController.php",
+		"/C/xampp/htdocs/blog/resources/views/layouts/app.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/categories/edit.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/categories/create.blade.php",
+		"/C/xampp/htdocs/blog/app/Http/Requests/CategoryUpdateRequest.php",
+		"/C/xampp/htdocs/blog/app/Http/Controllers/Admin/CategoryController.php",
+		"/C/xampp/htdocs/blog/resources/views/auth/register.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/categories/partials/form.blade.php",
+		"/C/xampp/htdocs/blog/app/Http/Requests/CategoryStoreRequest.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/categories/index.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/welcome.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/test.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/category/partials/form.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/category/edit.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/category/show.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/category/index.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/admin/category/create.blade.php",
+		"/C/xampp/htdocs/blog/routes/web.php",
+		"/C/xampp/htdocs/blog/config/app.php",
+		"/C/xampp/htdocs/blog/.env",
+		"/C/xampp/htdocs/blog/app/Http/Controllers/Web/PageController.php",
+		"/C/xampp/htdocs/blog/app/Http/Controllers/Auth/VerificationController.php",
+		"/C/xampp/htdocs/blog/app/Http/Controllers/Auth/ResetPasswordController.php",
+		"/C/xampp/htdocs/blog/app/Http/Controllers/Auth/RegisterController.php",
+		"/C/xampp/htdocs/blog/app/Http/Controllers/Auth/LoginController.php",
+		"/C/xampp/htdocs/blog/resources/views/web/post.blade.php",
+		"/C/xampp/htdocs/blog/resources/views/web/posts.blade.php",
+		"/C/xampp/htdocs/blog/database/migrations/2019_03_17_053438_post_slug.php",
+		"/C/xampp/htdocs/blog/database/factories/PostFactory.php",
+		"/C/xampp/htdocs/blog/app/post.php",
+		"/C/xampp/htdocs/blog/app/Category.php",
+		"/C/xampp/htdocs/blog/database/migrations/2019_03_16_194051_create_posts_table.php",
+		"/C/xampp/htdocs/blog/database/seeds/DatabaseSeeder.php",
+		"/C/xampp/htdocs/blog/database/seeds/CategoriesTableSeeder.php",
+		"/C/xampp/htdocs/blog/database/migrations/2019_02_20_225901_create_table_tests.php",
+		"/C/xampp/htdocs/blog/database/migrations/2019_03_17_003742_create_categories_table.php",
+		"/C/xampp/htdocs/blog/app/User.php",
+		"/C/xampp/htdocs/blog/database/seeds/PostsTableSeeder.php",
+		"/C/xampp/htdocs/blog/database/seeds/UsersTableSeeder.php",
+		"/C/xampp/htdocs/blog/database/factories/UserFactory.php",
+		"/C/xampp/htdocs/blog/app/Post.php"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"'\n",
+			"category",
+			"categories",
+			"category",
+			"categories",
+			"category",
+			"categories",
+			"creada",
+			"Categoría",
+			"categories",
+			"Category",
+			"{\n",
+			" \t\t\t\t\t\t\t\n",
+			">\n",
+			"POST",
+			"orderBy"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"post",
+			"posts",
+			"post",
+			"posts",
+			"post",
+			"posts",
+			"creado",
+			"Post",
+			"posts",
+			"Post"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/Cliente.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 563,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Http/Controllers/CuotaController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2240,
+								2240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1413.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/ClienteController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2710,
+								2978
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1771.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 313.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/mysql.sublime-build",
+	"project": "cuotas.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 355.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
