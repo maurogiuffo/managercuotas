@@ -11,10 +11,13 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
+Route::get('/', 'ClienteController@index');
 
 Auth::routes();
 

@@ -12,14 +12,15 @@ class CuotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $busqueda = $request->get('busqueda');
 
         $cuotas= Cuota::orderBy('id')
             ->paginate();
         
-        return view('cuotas.index',compact('cuotas');  
+        return view('cuotas.index',compact('cuotas','busqueda'));  
     }
 
     /**
@@ -30,7 +31,7 @@ class CuotaController extends Controller
     public function create()
     {
         //
-         return view('cuotas.create',compact('cuotas');  
+         return view('cuotas.create');  
     }
 
     /**
@@ -47,7 +48,6 @@ class CuotaController extends Controller
 
         return redirect()->route('cuotas.index',$cuota->id)
             ->with('info','Cuota creada con éxito');    
-        }
     }
 
     /**
@@ -60,7 +60,8 @@ class CuotaController extends Controller
     {
         $cuota= Cuota::find($cuota->id);
 
-        return view('cuotas.show',compact('cuota'));        }
+        return view('cuotas.show',compact('cuota'));       
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -70,7 +71,7 @@ class CuotaController extends Controller
      */
     public function edit(Cuota $cuota)
     {
-        $cuota= Cliente::find($cuota->id);
+        $cuota= Cuota::find($cuota->id);
         //$this->authorize('pass',$cuota);
 
 
@@ -104,5 +105,15 @@ class CuotaController extends Controller
     public function destroy(Cuota $cuota)
     {
         //
+        try
+        {
+            Cuota::find($cuota->id)->delete();
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+             return back()->with('error','Error al borrar');
+        }
+
+        return back()->with('info','Cuota eliminado');
     }
 }

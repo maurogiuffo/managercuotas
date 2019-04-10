@@ -36,6 +36,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a> 
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('recibos.index') }}">Recibos</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cuotas.index') }}">Cuotas</a> 
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -51,8 +57,8 @@
                                 </li>
                             @endif
                         @else
-                            <a class="nav-link" href="{{ route('categories.index') }}">Categorias</a>
-                            <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
+                            <a class="nav-link" href="">Categorias</a>
+                            <a class="nav-link" href="">Posts</a>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
