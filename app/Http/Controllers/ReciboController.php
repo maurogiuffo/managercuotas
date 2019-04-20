@@ -12,8 +12,10 @@ class ReciboController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $busqueda = $request->get('busqueda');
 
         //$nombre = $request->get('nombre');
 
@@ -21,7 +23,7 @@ class ReciboController extends Controller
            // ->nombre($nombre)
             ->paginate();
         
-        return view('recibos.index',compact('recibos');//,'nombre'));    
+        return view('recibos.index',compact('recibos','busqueda'));  
     }
 
     /**
@@ -33,7 +35,7 @@ class ReciboController extends Controller
     {
     	$idcliente = $request->get('idcliente');
         $cliente= Cliente::find($idcliente);
-        $cuotas= Cuota::orderBy('anio',desc)
+        $cuotas= Cuota::orderBy('anio',desc);
 
         return view('recibos.create',compact('cliente','cuotas'));  
     }
