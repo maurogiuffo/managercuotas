@@ -19,7 +19,6 @@ class ClienteController extends Controller
 
         $clientes= Cliente::orderBy('nombre')
             ->nombre($nombre)
-            
             ->paginate();
         
         return view('clientes.index',compact('clientes','nombre'));    

@@ -7,11 +7,11 @@
 		<div class="col-md-8 col-offset-2">
 			<div class="card">
 				<div class="card-header">
-					Lista de Clientes
+					Lista de Cuotas
 					<div>
-							<form method="GET" action="{{ route('clientes.index') }}" class="navbar-form pull-right"> 
+							<form method="GET" action="{{ route('cuotas.index') }}" class="navbar-form pull-right"> 
 							    <div class="input-group"> 
-					                <input type="text" class="form-control" name="nombre" placeholder="Busqueda" value ="{{$nombre}}"> 
+					                <input type="text" class="form-control" name="busqueda" placeholder="Busqueda" value ="{{$busqueda}}"> 
 									 <span class="input-group-btn"> 
 					                    <button type="submit" class="btn btn-default"> 
 					                        <span class="glyphicon glyphicon-search">Buscar</span> 
@@ -28,7 +28,7 @@
 				
 				<div class="card-body">
 					<div>
-						<a href="{{route('clientes.create')}}" class="btn btn-sm btn-primary btn-sm-right">
+						<a href="{{route('cuotas.create')}}" class="btn btn-sm btn-primary btn-sm-right">
 							Crear
 						</a>
 					</div>
@@ -39,31 +39,28 @@
 				  	<table>
 				  		<thead>
 				  			<tr>
-				  				<th>Nombre</th>
-				  				<th>Apellido</th>
-				  				<th>DNI</th>
-				  				<th>Direccion</th>
-				  				<th>Telefono</th>
+				  				<th>Mes</th>
+				  				<th>Año</th>
+				  				<th>Importe</th>
+				  				
 				  				<th></th>
 				  				<th></th>
 				  				<th></th>
 				  			</tr>
 				  		</thead>
 				  		<tbody>
-				  			@foreach($clientes as $cliente )
+				  			@foreach($cuotas as $cuota )
 				  			<tr>
-				  				<td>{{ $cliente->nombre}}</td>
-				  				<td>{{ $cliente->apellido}}</td>
-				  				<td>{{ $cliente->dni}}</td>
-				  				<td>{{ $cliente->direccion}}</td>
-				  				<td>{{ $cliente->telefono}}</td>
-				  				<td><a href="{{ route('clientes.show',$cliente->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
-				  				<td><a href="{{ route('clientes.edit',$cliente->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
+				  				<td>{{ $cuota->mes}}</td>
+				  				<td>{{ $cuota->anio}}</td>
+				  				<td>{{ $cuota->importe}}</td>
+				  				<td><a href="{{ route('cuotas.show',$cuota->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
+				  				<td><a href="{{ route('cuotas.edit',$cuota->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
 				  				<td>
-									<form method="POST" action="{{ route('clientes.destroy',$cliente->id) }}">
+									<form method="POST" action="{{ route('cuotas.destroy',$cuota->id) }}">
 										  @csrf
 										   @method('DELETE')
-										  <input type="hidden" id="{{ $cliente->id }}">
+										  <input type="hidden" id="{{ $cuota->id }}">
 										<button type="submit" class="btn btn-sm btn-primary">
 		                                {{ __('Eliminar') }}
 		                               	</button>	
@@ -73,7 +70,7 @@
 				  			@endforeach
 				  		</tbody>
 				  	</table>
-					{{$clientes->render()}}
+					{{$cuotas->render()}}
 
 				</div>
 			</div>

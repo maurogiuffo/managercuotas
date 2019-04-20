@@ -8,7 +8,7 @@ class Cuota extends Model
 {
     //
     protected $fillable = [
-		'mes','anio','importe','saldo',
+		'mes','anio','importe',
 	];
 
 

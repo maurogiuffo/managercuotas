@@ -17,7 +17,7 @@ class CuotaController extends Controller
         //
         $busqueda = $request->get('busqueda');
 
-        $cuotas= Cuota::orderBy('id')
+        $cuotas= Cuota::orderBy('anio')
             ->paginate();
         
         return view('cuotas.index',compact('cuotas','busqueda'));  

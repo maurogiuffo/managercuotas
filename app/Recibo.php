@@ -8,12 +8,12 @@ class Recibo extends Model
 {
     //
   	protected $fillable = [
-		'id_cliente','id_user','codigo','id_cuota','importe'
+		'id_cliente','id_user','codigo','id_cuota_cliente','importe'
 	];
 
  	public function Cuota()
     {
-        return $this->hasOne('App\Cuota');
+        return $this->hasOne('App\CuotaCliente');
     }
 
     public function Cliente()

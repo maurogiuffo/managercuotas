@@ -18,14 +18,14 @@ class CreateRecibosTable extends Migration
             $table->string('codigo');
             $table->bigInteger('id_cliente')->unsigned();
             $table->bigInteger('id_user')->unsigned();
+            $table->bigInteger('id_cuota_cliente')->unsigned();
 
-            $table->bigInteger('id_cuota')->unsigned();
             $table->decimal('importe', 8, 2);
             $table->timestamps();
 
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_cuota')->references('id')->on('cuotas');
+            $table->foreign('id_cuota_cliente')->references('id')->on('cuotas_clientes');
 
         });
     }
