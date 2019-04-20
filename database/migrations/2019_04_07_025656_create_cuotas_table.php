@@ -20,6 +20,8 @@ class CreateCuotasTable extends Migration
             $table->decimal('importe', 8, 2);
             $table->timestamps();
 
+            $table->unique(['mes', 'anio']);
+
         });
     }
 
