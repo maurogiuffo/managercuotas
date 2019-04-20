@@ -33,15 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('recibos.index') }}">Recibos</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cuotas.index') }}">Cuotas</a> 
-                        </li>
+                   
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -57,9 +49,15 @@
                                 </li>
                             @endif
                         @else
-                            <a class="nav-link" href="">Categorias</a>
-                            <a class="nav-link" href="">Posts</a>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('recibos.index') }}">Recibos</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('cuotas.index') }}">Cuotas</a> 
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

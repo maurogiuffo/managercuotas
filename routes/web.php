@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/', 'ClienteController@index');
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::resource('clientes', 'ClienteController');
 Route::resource('recibos', 'ReciboController');
