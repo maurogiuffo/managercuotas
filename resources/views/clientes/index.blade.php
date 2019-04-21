@@ -58,7 +58,10 @@
 				  				<td>{{ $cliente->dni}}</td>
 				  				<td>{{ $cliente->direccion}}</td>
 				  				<td>{{ $cliente->telefono}}</td>
-				  				<td><a href="{{ route('clientes.show',$cliente->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
+								  <td><a href="{{ route('clientes.show',$cliente->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
+								  
+								@if(Auth::user()->isAdmin())
+									
 				  				<td><a href="{{ route('clientes.edit',$cliente->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
 				  				<td>
 									<form method="POST" action="{{ route('clientes.destroy',$cliente->id) }}">
@@ -70,7 +73,8 @@
 		                               	</button>	
 		                            </form>
 								</td>
-								  
+								@endif
+
 								<td><a href="{{ route('recibos.create',["id=$cliente->id"])}}" class="btn btn-sm btn-primary">Recibo</a></td>
 
 				  			</tr>

@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class CuotaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','role:ADMIN']);
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -44,12 +51,15 @@ class CuotaController extends Controller
      */
     public function store(Request $request)
     {
+        DB::beginTransaction();
         $cuota = Cuota::create($request->all());
 
         $cuota->save();
 
         $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes)";
         DB::statement($sql);
+
+        DB::commit();
 
         return redirect()->route('cuotas.index',$cuota->id)
             ->with('info','Cuota creada con éxito');    
@@ -96,6 +106,16 @@ class CuotaController extends Controller
         $cuota = Cuota::find($cuota->id);
         $cuota->fill($request->all());
         $cuota->save();
+
+        DB::beginTransaction();
+
+        //$sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes)";
+        //DB::statement($sql);
+
+        $sql = "update cuotas_clientes set importe=$cuota->importe,saldo=$cuota->importe, updated_at = now() where saldo=importe and id_cuota=$cuota->id ";
+        DB::statement($sql);
+
+        DB::commit();
 
          return redirect()->route('cuotas.index',$cuota->id)
             ->with('info','Cuota actualizada con éxito');

@@ -27,14 +27,7 @@
 				
 				
 				<div class="card-body">
-					<div>
-						<a href="{{route('recibos.create')}}" class="btn btn-sm btn-primary btn-sm-right">
-							Crear
-						</a>
-					</div>
 					
-
-
 
 				  	<table>
 				  		<thead>
@@ -57,7 +50,8 @@
 				  				<td>{{ $recibo->created_at}}</td>
 				  				<td>{{ $recibo->cliente->nombre }} {{ $recibo->cliente->apellido}}</td>
 				  				<td>{{ $recibo->importe}}</td>
-				  				<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
+								<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
+								@if(Auth::user()->isAdmin())
 				  				<td><a href="{{ route('recibos.edit',$recibo->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
 				  				<td>
 									<form method="POST" action="{{ route('recibos.destroy',$recibo->id) }}">
@@ -68,7 +62,8 @@
 		                                {{ __('Eliminar') }}
 		                               	</button>	
 		                            </form>
-				  				</td>
+								  </td>
+								@endif
 				  			</tr>
 				  			@endforeach
 				  		</tbody>
