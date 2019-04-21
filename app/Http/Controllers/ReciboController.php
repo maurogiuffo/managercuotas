@@ -28,8 +28,6 @@ class ReciboController extends Controller
 
         $busqueda = $request->get('busqueda');
 
-        //$nombre = $request->get('nombre');
-
         $recibos= Recibo::with('cliente')
             ->orderBy('id','desc')
            // ->nombre($nombre)
@@ -124,7 +122,7 @@ class ReciboController extends Controller
 
 
         //$categories = Category::orderBy('name','ASC')->get();
-        return view('recibos.edit',compact('recibo'));    
+       // return view('recibos.edit',compact('recibo'));    
     }
 
     /**
@@ -164,6 +162,6 @@ class ReciboController extends Controller
              return back()->with('error','Error al borrar');
         }*/
 
-        return back()->with('info','Recibo eliminado');
+       // return back()->with('info','Recibo eliminado');
     }
 }

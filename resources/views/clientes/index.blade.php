@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-md-8 col-offset-2">
+		<div class="col-md-10 col-offset-2">
 			<div class="card">
 				<div class="card-header">
 					Lista de Clientes
@@ -36,7 +36,7 @@
 
 
 
-				  	<table>
+				  	<table width="100%">
 				  		<thead>
 				  			<tr>
 				  				<th>Nombre</th>

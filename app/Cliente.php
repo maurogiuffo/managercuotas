@@ -18,7 +18,7 @@ class Cliente extends Model
 
     
 	public function Cuotas() {
-        return $this->hasMany('App\CuotaCliente');
+        return $this->hasMany('App\CuotaCliente','id_cliente');
     }
 
     public function scopeNombre($query, $nombre)

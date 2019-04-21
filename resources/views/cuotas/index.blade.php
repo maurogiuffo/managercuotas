@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-md-8 col-offset-2">
+		<div class="col-md-10 col-offset-2">
 			<div class="card">
 				<div class="card-header">
 					Lista de Cuotas
@@ -36,14 +36,12 @@
 
 
 
-				  	<table>
+					<table width="100%">
 				  		<thead>
 				  			<tr>
 				  				<th>Mes</th>
 				  				<th>Año</th>
 				  				<th>Importe</th>
-				  				
-				  				<th></th>
 				  				<th></th>
 				  				<th></th>
 				  			</tr>
@@ -54,9 +52,13 @@
 				  				<td>{{ $cuota->mes}}</td>
 				  				<td>{{ $cuota->anio}}</td>
 				  				<td>{{ $cuota->importe}}</td>
-				  				<td><a href="{{ route('cuotas.show',$cuota->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
-				  				<td><a href="{{ route('cuotas.edit',$cuota->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
 				  				<td>
+									<a href="{{ route('cuotas.show',$cuota->id)}}" class="btn btn-sm btn-primary">Ver</a>
+				  					<a href="{{ route('cuotas.edit',$cuota->id)}}" class="btn btn-sm btn-primary">Editar</a>
+								</td>
+								<td>
+								@if(Auth::user()->isSuperAdmin())
+
 									<form method="POST" action="{{ route('cuotas.destroy',$cuota->id) }}">
 										  @csrf
 										   @method('DELETE')
@@ -64,7 +66,8 @@
 										<button type="submit" class="btn btn-sm btn-primary">
 		                                {{ __('Eliminar') }}
 		                               	</button>	
-		                            </form>
+									</form>
+								@endif
 				  				</td>
 				  			</tr>
 				  			@endforeach

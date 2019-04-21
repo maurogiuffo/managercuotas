@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-md-8 col-offset-2">
+		<div class="col-md-10 col-offset-2">
 			<div class="card">
 				<div class="card-header">
 					Lista de Recibos
@@ -29,7 +29,7 @@
 				<div class="card-body">
 					
 
-				  	<table>
+					<table width="100%">
 				  		<thead>
 				  			<tr>
 				  				<th>Numero</th>
@@ -51,7 +51,7 @@
 				  				<td>{{ $recibo->cliente->nombre }} {{ $recibo->cliente->apellido}}</td>
 				  				<td>{{ $recibo->importe}}</td>
 								<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
-								@if(Auth::user()->isAdmin())
+								@if(Auth::user()->isSuperAdmin())
 				  				<td><a href="{{ route('recibos.edit',$recibo->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
 				  				<td>
 									<form method="POST" action="{{ route('recibos.destroy',$recibo->id) }}">

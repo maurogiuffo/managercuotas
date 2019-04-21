@@ -19,7 +19,7 @@ class CuotaCliente extends Model
 
     public function Cliente()
     {
-        return $this->belongsTo('App\Cliente');
+        return $this->belongsTo('App\Cliente','id_cliente');
     }
 
     public function Cuota()

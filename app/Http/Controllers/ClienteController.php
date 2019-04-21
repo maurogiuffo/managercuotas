@@ -18,8 +18,10 @@ class ClienteController extends Controller
     {
 
         $nombre = $request->get('nombre');
+    
 
-        $clientes= Cliente::orderBy('nombre')
+        $clientes= Cliente::
+            orderBy('nombre')
             ->nombre($nombre)
             ->paginate();
         
