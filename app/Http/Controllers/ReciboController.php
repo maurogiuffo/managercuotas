@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Recibo;
+use App\Cliente;
+use App\CuotaCliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReciboController extends Controller
 {
@@ -33,10 +37,17 @@ class ReciboController extends Controller
      */
     public function create(Request $request)
     {
-    	$idcliente = $request->get('idcliente');
+    	$idcliente = $request->get('id');
         $cliente= Cliente::find($idcliente);
-        $cuotas= Cuota::orderBy('anio',desc);
 
+        $cuotas= CuotaCliente::with('cuota')
+                    ->get()
+                    ->where('saldo', '>', 0)
+                    ->where('id_cliente',$idcliente);
+                    
+                    
+        
+        //return compact('cliente','cuotas');
         return view('recibos.create',compact('cliente','cuotas'));  
     }
 
@@ -48,11 +59,32 @@ class ReciboController extends Controller
      */
     public function store(Request $request)
     {
-     	$recibo = Recibo::create($request->all());
+        DB::beginTransaction();
+     	$recibo = new Recibo;
+        $recibo->id_cliente = $request->id_cliente;
+        $recibo->id_user=Auth::user()->id;  
+        $recibo->importe=0;  
 
         $recibo->save();
 
-        return redirect()->route('recibos.index',$recibo->id)
+        $importe=0;
+        foreach($request->id_cuota as $id) 
+        {
+            $cuota=CuotaCliente::find($id);
+            $cuota->id_recibo = $recibo->id;
+            $cuota->saldo=0;
+            $importe += $cuota->importe;
+
+            $cuota->save();
+        }
+
+        $recibo->importe = $importe;
+        
+        $recibo->save();
+
+        DB::commit();
+
+        return redirect()->route('recibos.show',$recibo)
             ->with('info','Recibo creado con éxito');    
     }
 

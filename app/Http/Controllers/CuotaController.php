@@ -48,7 +48,7 @@ class CuotaController extends Controller
 
         $cuota->save();
 
-        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,importe,saldo,created_at,updated_at)(select id,$cuota->id,$cuota->importe,$cuota->importe,now(),now() from clientes)";
+        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes)";
         DB::statement($sql);
 
         return redirect()->route('cuotas.index',$cuota->id)

@@ -18,12 +18,14 @@ class CreateCuotasClientesTable extends Migration
 
             $table->bigInteger('id_cliente')->unsigned();
             $table->bigInteger('id_cuota')->unsigned();
+            $table->bigInteger('id_recibo')->unsigned();
 
             $table->decimal('importe', 8, 2);
             $table->decimal('saldo', 8, 2);
 
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->foreign('id_cuota')->references('id')->on('cuotas');
+            //$table->foreign('id_recibo')->references('id')->on('recibos');
 
             $table->unique(['id_cliente', 'id_cuota']);
 

@@ -25,3 +25,5 @@ Auth::routes(['register' => false]);
 Route::resource('clientes', 'ClienteController');
 Route::resource('recibos', 'ReciboController');
 Route::resource('cuotas', 'CuotaController');
+
+//Route::get('recibos/create/{id}', 'ReciboController@create');

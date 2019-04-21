@@ -47,6 +47,7 @@
 				  				<th></th>
 				  				<th></th>
 				  				<th></th>
+				  				<th></th>
 				  			</tr>
 				  		</thead>
 				  		<tbody>
@@ -68,7 +69,10 @@
 		                                {{ __('Eliminar') }}
 		                               	</button>	
 		                            </form>
-				  				</td>
+								</td>
+								  
+								<td><a href="{{ route('recibos.create',["id=$cliente->id"])}}" class="btn btn-sm btn-primary">Recibo</a></td>
+
 				  			</tr>
 				  			@endforeach
 				  		</tbody>

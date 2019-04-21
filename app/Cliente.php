@@ -16,6 +16,11 @@ class Cliente extends Model
         return $this->hasMany('App\Recibo');
     }
 
+    
+	public function Cuotas() {
+        return $this->hasMany('App\CuotaCliente');
+    }
+
     public function scopeNombre($query, $nombre)
     {
         if($nombre)      

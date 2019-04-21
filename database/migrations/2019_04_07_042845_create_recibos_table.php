@@ -15,17 +15,15 @@ class CreateRecibosTable extends Migration
     {
         Schema::create('recibos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('codigo');
+            $table->string('codigo')->default('');
             $table->bigInteger('id_cliente')->unsigned();
             $table->bigInteger('id_user')->unsigned();
-            $table->bigInteger('id_cuota_cliente')->unsigned();
 
             $table->decimal('importe', 8, 2);
             $table->timestamps();
 
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_cuota_cliente')->references('id')->on('cuotas_clientes');
 
         });
     }
