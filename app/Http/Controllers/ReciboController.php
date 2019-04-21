@@ -23,10 +23,10 @@ class ReciboController extends Controller
 
         //$nombre = $request->get('nombre');
 
-        $recibos= Recibo::orderBy('id','desc')
+        $recibos= Recibo::with('cliente')
+            ->orderBy('id','desc')
            // ->nombre($nombre)
             ->paginate();
-        
         return view('recibos.index',compact('recibos','busqueda'));  
     }
 
@@ -43,11 +43,8 @@ class ReciboController extends Controller
         $cuotas= CuotaCliente::with('cuota')
                     ->get()
                     ->where('saldo', '>', 0)
-                    ->where('id_cliente',$idcliente);
-                    
-                    
+                    ->where('id_cliente',$idcliente);                    
         
-        //return compact('cliente','cuotas');
         return view('recibos.create',compact('cliente','cuotas'));  
     }
 
@@ -98,7 +95,13 @@ class ReciboController extends Controller
     {
         $recibo= Recibo::find($recibo->id);
 
-        return view('recibos.show',compact('recibo'));       
+        $cliente= Cliente::find($recibo->id_cliente);
+
+        $cuotas= CuotaCliente::with('cuota')
+                    ->get()
+                    ->where('id_recibo',$recibo->id);                    
+                    
+        return view('recibos.show',compact('recibo','cliente','cuotas'));       
     }
 
     /**
@@ -109,7 +112,7 @@ class ReciboController extends Controller
      */
     public function edit(Recibo $recibo)
     {
-        $recibo= Recibo::find($recibo->id);
+        //$recibo= Recibo::find($recibo->id);
         //$this->authorize('pass',$recibo);
 
 
@@ -126,12 +129,13 @@ class ReciboController extends Controller
      */
     public function update(Request $request, Recibo $recibo)
     {
+        /*
         $recibo = Recibo::find($recibo->id);
         $recibo->fill($request->all());
         $recibo->save();
 
          return redirect()->route('recibos.index',$recibo->id)
-            ->with('info','Recibo creado con éxito');
+            ->with('info','Recibo creado con éxito');*/
     }
 
     /**
@@ -143,6 +147,7 @@ class ReciboController extends Controller
     public function destroy(Recibo $recibo)
     {
         //
+        /*
         try
         {
             Recibo::find($recibo->id)->delete();
@@ -150,7 +155,7 @@ class ReciboController extends Controller
         catch(\Illuminate\Database\QueryException $e)
         {
              return back()->with('error','Error al borrar');
-        }
+        }*/
 
         return back()->with('info','Recibo eliminado');
     }

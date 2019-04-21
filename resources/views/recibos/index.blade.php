@@ -39,8 +39,7 @@
 				  	<table>
 				  		<thead>
 				  			<tr>
-				  				<th>ID</th>
-				  				<th>Codigo</th>
+				  				<th>Numero</th>
 				  				<th>Fecha</th>
 				  				
 				  				<th>Cliente</th>
@@ -54,10 +53,9 @@
 				  		<tbody>
 				  			@foreach($recibos as $recibo )
 				  			<tr>
-				  				<td>{{ $recibo->id_recibo}}</td>
-				  				<td>{{ $recibo->codigo}}</td>
-				  				<td>{{ $recibo->fecha}}</td>
-				  				<td>{{ $recibo->cliente}}</td>
+				  				<td>{{ $recibo->id}}</td>
+				  				<td>{{ $recibo->created_at}}</td>
+				  				<td>{{ $recibo->cliente->nombre }} {{ $recibo->cliente->apellido}}</td>
 				  				<td>{{ $recibo->importe}}</td>
 				  				<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
 				  				<td><a href="{{ route('recibos.edit',$recibo->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
