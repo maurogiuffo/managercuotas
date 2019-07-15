@@ -35,7 +35,15 @@
 									<tr>
 										<td>Telefono</td>
 										<td><input type="text" name="telefono" id="telefono" value="{{ $cliente->telefono }}"></td>
-									</tr>	
+									</tr>
+									<tr>
+										<td>Tipo Cuota</td>
+										<td>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO1" {{ $cliente->tipo_cuota == 'TIPO1' ? "checked" : "" }}>TIPO1<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO2" {{ $cliente->tipo_cuota == 'TIPO2' ? "checked" : "" }}>TIPO2<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO3" {{ $cliente->tipo_cuota == 'TIPO3' ? "checked" : "" }}>TIPO3
+										</td>
+									</tr>										
 								</table>
 
 								<button type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	

@@ -33,6 +33,14 @@
 									<tr>
 										<td>Telefono</td>
 										<td><input type="text" name="telefono" id="telefono" value=""></td>
+									</tr>
+									<tr>
+										<td>Tipo Cuota</td>
+										<td>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO1">TIPO1<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO2">TIPO2<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO3">TIPO3
+										</td>
 									</tr>	
 								</table>
 

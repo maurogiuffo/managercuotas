@@ -56,8 +56,15 @@ class CuotaController extends Controller
 
         $cuota->save();
 
-        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes)";
+        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes where tipo_cuota='TIPO1')";
         DB::statement($sql);
+
+        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe2,$cuota->importe2,now(),now() from clientes where tipo_cuota='TIPO2')";
+        DB::statement($sql);
+
+        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe3,$cuota->importe3,now(),now() from clientes where tipo_cuota='TIPO3')";
+        DB::statement($sql);
+
 
         DB::commit();
 

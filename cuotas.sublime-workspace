@@ -59,33 +59,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/Http/Controllers/ReciboController.php",
-			"settings":
-			{
-				"buffer_size": 3025,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/CuotaController.php",
-			"settings":
-			{
-				"buffer_size": 2799,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/ClienteController.php",
-			"settings":
-			{
-				"buffer_size": 2980,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -121,26 +94,52 @@
 	[
 		"/D/Workspace/servicios",
 		"/D/Workspace/servicios/app",
-		"/D/Workspace/servicios/app/Http",
-		"/D/Workspace/servicios/app/Http/Controllers",
-		"/D/Workspace/servicios/app/Http/Middleware",
-		"/D/Workspace/servicios/resources",
-		"/D/Workspace/servicios/resources/views",
-		"/D/Workspace/servicios/resources/views/recibos",
+		"/D/Workspace/servicios/app/Providers",
+		"/D/Workspace/servicios/config",
+		"/D/Workspace/servicios/database",
+		"/D/Workspace/servicios/database/migrations",
+		"/D/Workspace/servicios/database/seeds",
 		"/D/Workspace/servicios/routes"
 	],
 	"file_history":
 	[
+		"/D/Workspace/servicios/app/Http/Kernel.php",
+		"/D/Workspace/servicios/config/auth.php",
+		"/D/Workspace/servicios/routes/api.php",
+		"/D/Workspace/servicios/routes/web.php",
+		"/D/Workspace/nodetest/app.js",
+		"/D/Workspace/servicios/database/migrations/2019_04_07_024354_create_clientes_table.php",
+		"/D/Workspace/servicios/database/migrations/2014_10_12_100000_create_password_resets_table.php",
+		"/D/Workspace/servicios/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/D/Workspace/Beleaf/pf_customer_web/src/containers/App.js",
+		"/D/Workspace/servicios/database/seeds/UsersTableSeeder.php",
+		"/D/Workspace/servicios/app/Providers/AuthServiceProvider.php",
+		"/D/Workspace/Beleaf/pf_customer_web/src/api.js",
+		"/D/Workspace/Beleaf/pf_customer_web/src/index.js",
+		"/D/Workspace/nodetest/index.html",
+		"/D/Workspace/nodetest/package.json",
+		"/D/Workspace/servicios/database/migrations/2019_04_07_025656_create_cuotas_table.php",
+		"/D/Workspace/servicios/.env",
+		"/D/Workspace/servicios/app/Http/Middleware/CheckRole.php",
+		"/D/Workspace/servicios/app/User.php",
+		"/D/Workspace/servicios/app/Http/Middleware/Authenticate.php",
 		"/D/Workspace/servicios/app/Http/Controllers/CuotaController.php",
+		"/D/Workspace/servicios/database/migrations/2019_04_07_042845_create_recibos_table.php",
+		"/D/Workspace/servicios/database/migrations/2019_04_07_052205_create_cuotas_clientes_table.php",
+		"/D/Workspace/servicios/app/Http/Middleware/RedirectIfAuthenticated.php",
+		"/D/Workspace/servicios/app/Http/Middleware/CheckForMaintenanceMode.php",
+		"/D/Workspace/servicios/app/Http/Controllers/ReciboController.php",
+		"/D/Workspace/servicios/app/Http/Controllers/ClienteController.php",
+		"/D/Workspace/servicios/app/Cuota.php",
+		"/D/Workspace/servicios/app/Recibo.php",
+		"/D/Workspace/servicios/database/seeds/DatabaseSeeder.php",
+		"/D/Workspace/servicios/database/seeds/ClientesTableSeeder.php",
 		"/D/Workspace/servicios/resources/views/cuotas/show.blade.php",
 		"/D/Workspace/servicios/resources/views/cuotas/index.blade.php",
 		"/D/Workspace/servicios/resources/views/cuotas/edit.blade.php",
-		"/D/Workspace/servicios/app/Http/Controllers/ClienteController.php",
 		"/D/Workspace/servicios/resources/views/welcome.blade.php",
-		"/D/Workspace/servicios/routes/web.php",
 		"/D/Workspace/servicios/resources/views/layouts/app.blade.php",
 		"/D/Workspace/servicios/resources/views/cuotas/create.blade.php",
-		"/D/Workspace/servicios/app/Http/Middleware/Authenticate.php",
 		"/D/Workspace/servicios/app/Http/Controllers/Auth/LoginController.php",
 		"/D/Workspace/servicios/app/Cliente.php",
 		"/D/Workspace/Cuotas/resources/views/clientes/index.blade.php",
@@ -248,6 +247,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CheckRole",
 			"cuota",
 			"'\n",
 			"category",
@@ -292,97 +292,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/Http/Controllers/ReciboController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3025,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1153,
-								1153
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 711.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/Http/Controllers/CuotaController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2799,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								343,
-								383
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/Http/Controllers/ClienteController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2980,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1414,
-								1461
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 702.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -467,7 +378,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 242.0,
+	"side_bar_width": 487.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

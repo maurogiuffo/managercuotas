@@ -25,6 +25,14 @@
 									<tr>
 										<td>Importe</td>
 										<td><input type="text" name="importe" id="importe" value=""></td>
+									</tr>										
+									<tr>
+										<td>Importe 2</td>
+										<td><input type="text" name="importe2" id="importe2" value=""></td>
+									</tr>	
+									<tr>
+										<td>Importe 3</td>
+										<td><input type="text" name="importe3" id="importe3" value=""></td>
 									</tr>	
 									
 								</table>

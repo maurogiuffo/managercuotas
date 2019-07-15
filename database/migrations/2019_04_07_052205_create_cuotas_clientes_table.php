@@ -25,7 +25,6 @@ class CreateCuotasClientesTable extends Migration
 
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->foreign('id_cuota')->references('id')->on('cuotas');
-            //$table->foreign('id_recibo')->references('id')->on('recibos');
 
             $table->unique(['id_cliente', 'id_cuota']);
 

@@ -27,8 +27,16 @@
 									<tr>
 										<td>Importe</td>
 										<td><input type="text" name="importe" id="importe" value="{{ $cuota->importe }}"></td>
+									</tr>										
+									<tr>
+										<td>Importe 2</td>
+										<td><input type="text" name="importe2" id="importe2" value="{{ $cuota->importe2 }}"></td>
 									</tr>	
-								
+									<tr>
+										<td>Importe 3</td>
+										<td><input type="text" name="importe3" id="importe3" value="{{ $cuota->importe3 }}"></td>
+									</tr>
+
 								</table>
 
 								<button type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
