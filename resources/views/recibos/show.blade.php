@@ -62,15 +62,16 @@
 									
 								</table>
 
-							
+
 						</div>
 					</div>
+
+					<a href="{{route('recibos.imprimir',[$recibo->id])}}">Imprimir</a>
 			</div>
-			
+
 		</div>
 		
 	</div>
 	
 </div>
-
 @endsection
