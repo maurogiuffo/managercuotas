@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use PDF;
+
 class ReciboController extends Controller
 {
 
@@ -163,5 +165,28 @@ class ReciboController extends Controller
         }*/
 
        // return back()->with('info','Recibo eliminado');
+    }
+
+    public function imprimir(Request $recibo)
+    {
+        /*
+        $data = [ 'title' => 'Recibo Nº '.$recibo->id, 
+                  'heading' => 'Recibo Nº '.$recibo->id,          
+                  'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.'        
+            ];
+        */
+
+        $recibo= Recibo::find($recibo->id);
+
+        $cliente= Cliente::find($recibo->id_cliente);
+
+        $cuotas= CuotaCliente::with('cuota')
+                    ->get()
+                    ->where('id_recibo',$recibo->id);                    
+                    
+
+
+        $pdf = PDF::loadView('pdf_view', compact('recibo','cliente','cuotas'));  
+        return $pdf->download('recibo'.$recibo->id.'.pdf');
     }
 }
