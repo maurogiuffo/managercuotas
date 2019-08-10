@@ -16,11 +16,39 @@
 								<table>
 									<tr>
 										<td>Mes</td>
-										<td><input type="text" name="mes" id="mes" value=""></td>
+										<td>
+											<select name="mes" id="mes">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+
 									</tr>
 									<tr>
 										<td>Año</td>
-										<td><input type="text" name="anio" id="anio" value=""></td>
+										<td>
+											<select name="anio" id="anio">
+												<option value="2018">2018</option>
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021">2021</option>
+												<option value="2022">2022</option>
+												<option value="2023">2023</option>
+												<option value="2024">2024</option>
+												<option value="2025">2025</option>
+											</select>
+
+
+											</td>
 									</tr>
 									<tr>
 										<td>Importe</td>

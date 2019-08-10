@@ -49,11 +49,13 @@ class ReciboController extends Controller
         $cliente= Cliente::find($idcliente);
 
         $cuotas= CuotaCliente::with('cuota')
-                    ->get()
+                    
                     ->where('saldo', '>', 0)
-                    ->where('id_cliente',$idcliente);
+                    ->where('id_cliente',$idcliente)
+                    ->orderBy('created_at','desc')
+                    ->get();
 
-        $cuotasacrear = Cuota::all();                        
+        $cuotasacrear = Cuota::orderBy('anio','desc')->orderBy('mes','desc')->get();                        
         
         return view('recibos.create',compact('cliente','cuotas','cuotasacrear'));  
     }
