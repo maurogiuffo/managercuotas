@@ -51,6 +51,16 @@ class CuotaController extends Controller
      */
     public function store(Request $request)
     {
+
+        if(
+            $request->importe <=0 || is_nan($request->importe) || 
+            $request->importe2 <=0 || is_nan($request->importe2) || 
+            $request->importe3 <=0 || is_nan($request->importe3) )
+        {
+             return redirect()->route('cuotas.create')
+                        ->with('info','Importe debe ser numero mayor que 0');    
+        }
+
         DB::beginTransaction();
         $cuota = Cuota::create($request->all());
 
