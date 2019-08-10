@@ -13,6 +13,8 @@
 
 							<form method="POST" action="{{ route('recibos.store')}}">
 								@csrf
+								<input type="hidden" name="generarnueva"  value="0">
+
 								<input type="hidden" name="id_cliente" id="id_cliente" value="{{ $cliente->id }}">
 
 								<table>
@@ -56,6 +58,24 @@
 								<button type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
 		                     </form>
   				
+
+							<form method="POST" action="{{ route('recibos.store')}}">
+								@csrf
+								<input type="hidden" name="generarnueva"  value="1">
+								<input type="hidden" name="id_cliente" id="id_cliente" value="{{ $cliente->id }}">
+
+								<select name="id_cuota" >
+									<option value ="-1">Seleccionar un Mes/Año a generar</option>
+									@foreach($cuotasacrear as $cuota )
+										<option value ="{{ $cuota->id}}">{{ $cuota->anio}} - {{ $cuota->mes}}</option>
+									@endforeach
+									
+								</select>
+
+								<button type="submit" class="btn btn-sm btn-primary">{{ __('Generar') }}</button>	
+		                     </form>
+
+
 						</div>
 					</div>
 			</div>

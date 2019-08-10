@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Recibo;
 use App\Cliente;
 use App\CuotaCliente;
+use App\Cuota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,9 +51,11 @@ class ReciboController extends Controller
         $cuotas= CuotaCliente::with('cuota')
                     ->get()
                     ->where('saldo', '>', 0)
-                    ->where('id_cliente',$idcliente);                    
+                    ->where('id_cliente',$idcliente);
+
+        $cuotasacrear = Cuota::all();                        
         
-        return view('recibos.create',compact('cliente','cuotas'));  
+        return view('recibos.create',compact('cliente','cuotas','cuotasacrear'));  
     }
 
     /**
@@ -63,34 +66,71 @@ class ReciboController extends Controller
      */
     public function store(Request $request)
     {
-        DB::beginTransaction();
-     	$recibo = new Recibo;
-        $recibo->id_cliente = $request->id_cliente;
-        $recibo->id_user=Auth::user()->id;  
-        $recibo->importe=0;  
 
-        $recibo->save();
-
-        $importe=0;
-        foreach($request->id_cuota as $id) 
+        if($request->generarnueva =="0")
         {
-            $cuota=CuotaCliente::find($id);
-            $cuota->id_recibo = $recibo->id;
-            $cuota->saldo=0;
-            $importe += $cuota->importe;
 
-            $cuota->save();
+
+            DB::beginTransaction();
+         	$recibo = new Recibo;
+            $recibo->id_cliente = $request->id_cliente;
+            $recibo->id_user=Auth::user()->id;  
+            $recibo->importe=0;  
+
+            $recibo->save();
+
+            $importe=0;
+            foreach($request->id_cuota as $id) 
+            {
+                $cuota=CuotaCliente::find($id);
+                $cuota->id_recibo = $recibo->id;
+                $cuota->saldo=0;
+                $importe += $cuota->importe;
+
+                $cuota->save();
+            }
+
+            $recibo->importe = $importe;
+            
+            $recibo->save();
+
+            DB::commit();
+
+            return redirect()->route('recibos.show',$recibo)
+                ->with('info','Recibo creado con éxito');    
+        }
+        else
+        {
+
+            if($request->id_cuota !="-1")
+            {
+                $cliente=Cliente::find($request->id_cliente);
+                $cuota=Cuota::find( $request->id_cuota);
+                $cuotacliente = new CuotaCliente;
+                $cuotacliente->id_cliente = $request->id_cliente;
+                $cuotacliente->id_cuota = $request->id_cuota;
+                $cuotacliente->id_recibo = 0;
+               
+
+                if($cliente->tipo_cuota == 'TIPO1')
+                    $cuotacliente->importe = $cuota->importe;
+                if($cliente->tipo_cuota == 'TIPO2')
+                    $cuotacliente->importe = $cuota->importe2;
+                if($cliente->tipo_cuota == 'TIPO3')
+                    $cuotacliente->importe = $cuota->importe3;
+
+                 $cuotacliente->saldo = $cuotacliente->importe;
+
+                $cuotacliente->save();
+            }
+
+            return redirect()->route('recibos.create',["id=$request->id_cliente"]);
+
         }
 
-        $recibo->importe = $importe;
-        
-        $recibo->save();
-
-        DB::commit();
-
-        return redirect()->route('recibos.show',$recibo)
-            ->with('info','Recibo creado con éxito');    
     }
+
+
 
     /**
      * Display the specified resource.
