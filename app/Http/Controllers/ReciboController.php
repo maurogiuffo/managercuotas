@@ -31,6 +31,10 @@ class ReciboController extends Controller
 
         $busqueda = $request->get('busqueda');
 
+
+
+
+
         $recibos= Recibo::with('cliente')
             ->orderBy('id','desc')
            // ->nombre($nombre)
@@ -56,7 +60,7 @@ class ReciboController extends Controller
                     ->get();
 
         $cuotasacrear = Cuota::orderBy('anio','desc')->orderBy('mes','desc')->get();                        
-        
+
         return view('recibos.create',compact('cliente','cuotas','cuotasacrear'));  
     }
 
@@ -71,32 +75,35 @@ class ReciboController extends Controller
 
         if($request->generarnueva =="0")
         {
+            if($request->id_cuota == null)
+                return back()->with('error','Error al grabar recibo.');
+                
+                DB::beginTransaction();
+                $recibo = new Recibo;
+                $recibo->id_cliente = $request->id_cliente;
+                $recibo->id_user=Auth::user()->id;  
+                $recibo->importe=0;  
 
+                $recibo->save();
 
-            DB::beginTransaction();
-         	$recibo = new Recibo;
-            $recibo->id_cliente = $request->id_cliente;
-            $recibo->id_user=Auth::user()->id;  
-            $recibo->importe=0;  
+                $importe=0;
 
-            $recibo->save();
+                foreach($request->id_cuota as $id) 
+                {
+                    $cuota=CuotaCliente::find($id);
+                    $cuota->id_recibo = $recibo->id;
+                    $cuota->saldo=0;
+                    $importe += $cuota->importe;
 
-            $importe=0;
-            foreach($request->id_cuota as $id) 
-            {
-                $cuota=CuotaCliente::find($id);
-                $cuota->id_recibo = $recibo->id;
-                $cuota->saldo=0;
-                $importe += $cuota->importe;
+                    $cuota->save();
+                }
 
-                $cuota->save();
-            }
+                $recibo->importe = $importe;
+                
+                $recibo->save();
 
-            $recibo->importe = $importe;
-            
-            $recibo->save();
-
-            DB::commit();
+                DB::commit();
+       
 
             return redirect()->route('recibos.show',$recibo)
                 ->with('info','Recibo creado con éxito');    
@@ -106,24 +113,34 @@ class ReciboController extends Controller
 
             if($request->id_cuota !="-1")
             {
-                $cliente=Cliente::find($request->id_cliente);
-                $cuota=Cuota::find( $request->id_cuota);
-                $cuotacliente = new CuotaCliente;
-                $cuotacliente->id_cliente = $request->id_cliente;
-                $cuotacliente->id_cuota = $request->id_cuota;
-                $cuotacliente->id_recibo = 0;
+
+                try
+                {
+                    $cliente=Cliente::find($request->id_cliente);
+                    $cuota=Cuota::find( $request->id_cuota);
+                    $cuotacliente = new CuotaCliente;
+                    $cuotacliente->id_cliente = $request->id_cliente;
+                    $cuotacliente->id_cuota = $request->id_cuota;
+                    $cuotacliente->id_recibo = 0;
+                   
+
+                    if($cliente->tipo_cuota == 'TIPO1')
+                        $cuotacliente->importe = $cuota->importe;
+                    if($cliente->tipo_cuota == 'TIPO2')
+                        $cuotacliente->importe = $cuota->importe2;
+                    if($cliente->tipo_cuota == 'TIPO3')
+                        $cuotacliente->importe = $cuota->importe3;
+
+                     $cuotacliente->saldo = $cuotacliente->importe;
+
+                    $cuotacliente->save();
+                }
+                catch(\Illuminate\Database\QueryException $e)
+                {
+                     return back()->with('error','Error al generar Cuota. Ya existe.');
+                }
+
                
-
-                if($cliente->tipo_cuota == 'TIPO1')
-                    $cuotacliente->importe = $cuota->importe;
-                if($cliente->tipo_cuota == 'TIPO2')
-                    $cuotacliente->importe = $cuota->importe2;
-                if($cliente->tipo_cuota == 'TIPO3')
-                    $cuotacliente->importe = $cuota->importe3;
-
-                 $cuotacliente->saldo = $cuotacliente->importe;
-
-                $cuotacliente->save();
             }
 
             return redirect()->route('recibos.create',["id=$request->id_cliente"]);
@@ -229,6 +246,21 @@ class ReciboController extends Controller
 
 
         $pdf = PDF::loadView('pdf_view', compact('recibo','cliente','cuotas'));  
-        return $pdf->download('recibo'.$recibo->id.'.pdf');
+        return $pdf
+            ->download('recibo'.$recibo->id.'.pdf');
+    }
+
+
+    public function createcuota($idcliente)
+    {
+        //$idcliente = $request->get('id');
+        $cliente= Cliente::find($idcliente);
+        
+
+        $cuotasacrear = Cuota::orderBy('anio','desc')->orderBy('mes','desc')->get();
+
+        
+        return $cuotasacrear;
+        return view('recibos.createcuota',compact('cliente','cuotas','cuotasacrear'));  
     }
 }

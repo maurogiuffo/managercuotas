@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -67,9 +68,42 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
 
+        $sql ="";
+       
+
         $cliente = Cliente::find($cliente->id);
+
+        if($request->tipo_cuota != $cliente->tipo_cuota)
+        {
+            $id=$cliente->id;
+
+            if($request->tipo_cuota =="TIPO1")
+            {
+                 $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe, cuotas_clientes.saldo = cuotas.importe where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
+            }
+
+            if($request->tipo_cuota =="TIPO2")
+            {
+                 $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe2, cuotas_clientes.saldo = cuotas.importe2 where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
+            }
+
+            if($request->tipo_cuota =="TIPO3")
+            {
+                 $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe3, cuotas_clientes.saldo = cuotas.importe3 where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
+            }
+        }
+
+
         $cliente->fill($request->all());
         $cliente->save();
+
+        if($sql !="")
+        {
+            DB::beginTransaction();
+            DB::statement($sql);
+
+            DB::commit();
+        }
 
          return redirect()->route('clientes.edit',$cliente->id)
             ->with('info','Cliente actualizado con éxito');    

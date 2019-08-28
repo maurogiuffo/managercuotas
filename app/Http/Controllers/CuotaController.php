@@ -26,7 +26,7 @@ class CuotaController extends Controller
         //
         $busqueda = $request->get('busqueda');
 
-        $cuotas= Cuota::orderBy('anio')
+        $cuotas= Cuota::orderBy('anio','desc')->orderBy('mes','desc')
             ->paginate();
         
         return view('cuotas.index',compact('cuotas','busqueda'));  
@@ -61,22 +61,31 @@ class CuotaController extends Controller
                         ->with('info','Importe debe ser numero mayor que 0');    
         }
 
-        DB::beginTransaction();
-        $cuota = Cuota::create($request->all());
+        try
+        {
+            DB::beginTransaction();
+            $cuota = Cuota::create($request->all());
 
-        $cuota->save();
+            $cuota->save();
 
-        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes where tipo_cuota='TIPO1')";
-        DB::statement($sql);
+            $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe,$cuota->importe,now(),now() from clientes where tipo_cuota='TIPO1')";
+            DB::statement($sql);
 
-        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe2,$cuota->importe2,now(),now() from clientes where tipo_cuota='TIPO2')";
-        DB::statement($sql);
+            $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe2,$cuota->importe2,now(),now() from clientes where tipo_cuota='TIPO2')";
+            DB::statement($sql);
 
-        $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe3,$cuota->importe3,now(),now() from clientes where tipo_cuota='TIPO3')";
-        DB::statement($sql);
+            $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe3,$cuota->importe3,now(),now() from clientes where tipo_cuota='TIPO3')";
+            DB::statement($sql);
 
 
-        DB::commit();
+            DB::commit();
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            return back()->with('error','Error al generar Cuota. Ya existe.');
+        }
+
+        
 
         return redirect()->route('cuotas.index',$cuota->id)
             ->with('info','Cuota creada con éxito');    

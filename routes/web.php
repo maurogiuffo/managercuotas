@@ -27,3 +27,5 @@ Route::resource('recibos', 'ReciboController');
 Route::resource('cuotas', 'CuotaController');
 
 Route::get('/recibos/imprimir/{id}', 'ReciboController@imprimir')->name('recibos.imprimir');
+
+Route::get('/recibos/createcuota/{id}', 'ReciboController@createcuota')->name('recibos.createcuota');
