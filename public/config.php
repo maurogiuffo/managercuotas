@@ -1,5 +1,5 @@
 <?php
-
+/*
 $site_url = 'http://www.receptoriapatagonia.com/servicios';
 
 $laravel_dir = '/home2/receptoriapatago/servicios-laravel';
@@ -25,4 +25,4 @@ echo 'Seeding...<br>';
 $kernel->call('db:seed', ['--force' => true]);
 
 // redirect
-echo "<script>window.location = '$site_url'</script>";
+echo "<script>window.location = '$site_url'</script>";*/
