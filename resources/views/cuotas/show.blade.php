@@ -13,17 +13,25 @@
 							
 								<table>
 									<tr>
-										<td>Mes</td>
+										<td class="col-md-4 ">Mes</td>
 										<td>{{ $cuota->mes }}</td>
 									</tr>
 									<tr>
-										<td>Año</td>
+										<td class="col-md-4 ">Año</td>
 										<td>{{ $cuota->anio }}</td>
 									</tr>
 									<tr>
-										<td>Importe</td>
+										<td class="col-md-4 ">Importe 1</td>
 										<td>{{ $cuota->importe }}</td>
+									</tr>
+									<tr>
+										<td class="col-md-4 ">Importe 2</td>
+										<td>{{ $cuota->importe2 }}</td>
 									</tr>	
+									<tr>
+										<td class="col-md-4 ">Importe 3</td>
+										<td>{{ $cuota->importe3 }}</td>
+									</tr>		
 									
 								</table>
 

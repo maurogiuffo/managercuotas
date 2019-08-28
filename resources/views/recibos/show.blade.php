@@ -14,26 +14,26 @@
 						
 							<table>
 								<tr>
-									<td>Fecha</td>
+									<td class="col-md-4 ">Fecha</td>
 									<td>{{ $recibo->created_at}} </td>
 								</tr>
 
 								<tr>
-									<td>Numero</td>
+									<td class="col-md-4 ">Numero</td>
 									<td>{{ $recibo->id}} </td>
 								</tr>
 
 								<tr>
-									<td>Cliente</td>
+									<td class="col-md-4 ">Cliente</td>
 									<td>{{ $cliente->nombre}} {{ $cliente->apellido}}</td>
 								</tr>
 								<tr>
-									<td>Direccion</td>
+									<td class="col-md-4 ">Direccion</td>
 									<td>{{ $cliente->direccion}}</td>
 								</tr>
 								
 								<tr>
-									<td>Importe</td>
+									<td class="col-md-4 ">Importe</td>
 									<td>{{ $recibo->importe}} </td>
 								</tr>
 							</table>
@@ -42,9 +42,9 @@
 							<table>
 								<thead>
 										<tr>
-										<th>Año</th>
-											<th>Mes</th>
-											<th>Importe</th>
+										<th class="col-md-4 ">Año</th>
+											<th class="col-md-4 ">Mes</th>
+											<th class="col-md-4 ">Importe</th>
 										
 										</tr>
 									</thead>
@@ -52,9 +52,9 @@
 										@foreach($cuotas as $cuota )
 										<tr>
 
-											<td>{{ $cuota->cuota->anio}}</td>
-											<td>{{ $cuota->cuota->mes}}</td>
-											<td>{{ $cuota->importe}}</td>
+											<td class="col-md-4 ">{{ $cuota->cuota->anio}}</td>
+											<td class="col-md-4 ">{{ $cuota->cuota->mes}}</td>
+											<td class="col-md-4 ">{{ $cuota->importe}}</td>
 
 										</tr>
 										@endforeach
@@ -64,9 +64,10 @@
 
 
 						</div>
-					</div>
+						<a href="{{route('recibos.imprimir',[$recibo->id])}}" class="btn btn-sm btn-primary btn-sm-right">Imprimir</a>
 
-					<a href="{{route('recibos.imprimir',[$recibo->id])}}">Imprimir</a>
+					</div>
+					
 			</div>
 
 		</div>

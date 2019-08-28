@@ -39,7 +39,7 @@
 				  	<table width="100%">
 				  		<thead>
 				  			<tr>
-				  				<th>Nombre</th>
+				  				<th >Nombre</th>
 				  				<th>Apellido</th>
 				  				<th>DNI</th>
 				  				<th>Direccion</th>

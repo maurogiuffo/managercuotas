@@ -17,23 +17,23 @@
 
 								<table>
 									<tr>
-										<td>Mes</td>
+										<td class="col-md-8 ">Mes</td>
 										<td><input type="text" name="mes" id="mes" value="{{ $cuota->mes }}"></td>
 									</tr>
 									<tr>
-										<td>Año</td>
+										<td class="col-md-8 ">Año</td>
 										<td><input type="text" name="anio" id="anio" value="{{ $cuota->anio }}"></td>
 									</tr>
 									<tr>
-										<td>Importe</td>
+										<td class="col-md-8 ">Importe</td>
 										<td><input type="text" name="importe" id="importe" value="{{ $cuota->importe }}"></td>
 									</tr>										
 									<tr>
-										<td>Importe 2</td>
+										<td class="col-md-8 ">Importe 2</td>
 										<td><input type="text" name="importe2" id="importe2" value="{{ $cuota->importe2 }}"></td>
 									</tr>	
 									<tr>
-										<td>Importe 3</td>
+										<td class="col-md-8 ">Importe 3</td>
 										<td><input type="text" name="importe3" id="importe3" value="{{ $cuota->importe3 }}"></td>
 									</tr>
 

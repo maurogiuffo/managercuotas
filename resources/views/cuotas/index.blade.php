@@ -36,23 +36,23 @@
 
 
 
-					<table width="100%">
+					<table >
 				  		<thead>
-				  			<tr>
-				  				<th>Mes</th>
-				  				<th>Año</th>
-				  				<th>Importe</th>
-				  				<th></th>
+				  			<tr >
+				  				<th class="col-md-2 ">Mes</th>
+				  				<th class="col-md-2 ">Año</th>
+				  				<th class="col-md-2 ">Importe</th>
+				  				<th class="col-md-2 "></th>
 				  				<th></th>
 				  			</tr>
 				  		</thead>
 				  		<tbody>
 				  			@foreach($cuotas as $cuota )
 				  			<tr>
-				  				<td>{{ $cuota->mes}}</td>
-				  				<td>{{ $cuota->anio}}</td>
-				  				<td>{{ $cuota->importe}}</td>
-				  				<td>
+				  				<td class="col-md-2 ">{{ $cuota->mes}}</td>
+				  				<td class="col-md-2 ">{{ $cuota->anio}}</td>
+				  				<td class="col-md-2 ">{{ $cuota->importe}}</td>
+				  				<td class="col-md-2 ">
 									<a href="{{ route('cuotas.show',$cuota->id)}}" class="btn btn-sm btn-primary">Ver</a>
 				  					<a href="{{ route('cuotas.edit',$cuota->id)}}" class="btn btn-sm btn-primary">Editar</a>
 								</td>

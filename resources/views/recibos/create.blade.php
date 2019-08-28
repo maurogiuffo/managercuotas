@@ -64,11 +64,11 @@
 
 								<table>
 									<tr>
-										<td>Cliente</td>
+										<td class="col-md-4 ">Cliente</td>
 										<td>{{ $cliente->nombre}} {{ $cliente->apellido}}</td>
 									</tr>
 									<tr>
-										<td>Direccion</td>
+										<td class="col-md-4 ">Direccion</td>
 										<td>{{ $cliente->direccion}}</td>
 									</tr>
 									
@@ -78,21 +78,21 @@
 								<table>
 									<thead>
 										<tr>
-										<th  class="col-md-8 col-offset-2" >Seleccionar</th>
-										<th  class="col-md-8 col-offset-2" >Año</th>
-										<th class="col-md-8 col-offset-2" >Mes</th>
-										<th class="col-md-8 col-offset-2" >Importe</th>
+										<th class="col-md-4 ">Seleccionar</th>
+										<th class="col-md-4 " >Año</th>
+										<th class="col-md-4 " >Mes</th>
+										<th class="col-md-4 " >Importe</th>
 										
 										</tr>
 									</thead>
 									<tbody>
 										@foreach($cuotas as $cuota )
 										<tr>
-											<td  class="col-md-8 col-offset-2" ><input name="id_cuota[{{ $cuota->id}}]" type="checkbox" value="{{ $cuota->id}}"></td>
+											<td class="col-md-4 "><input name="id_cuota[{{ $cuota->id}}]" type="checkbox" value="{{ $cuota->id}}"></td>
 
-											<td class="col-md-8 col-offset-2" >{{ $cuota->cuota->anio}}</td>
-											<td class="col-md-8 col-offset-2" >{{ $cuota->cuota->mes}}</td>
-											<td class="col-md-8 col-offset-2" >{{ $cuota->saldo}}</td>
+											<td class="col-md-4 " >{{ $cuota->cuota->anio}}</td>
+											<td class="col-md-4 " >{{ $cuota->cuota->mes}}</td>
+											<td class="col-md-4 " >{{ $cuota->saldo}}</td>
 
 										</tr>
 										@endforeach

@@ -17,27 +17,27 @@
 
 								<table>
 									<tr>
-										<td>Nombre</td>
+										<td class="col-md-4 ">Nombre</td>
 										<td><input type="text" name="nombre" id="nombre" value="{{ $cliente->nombre }}"></td>
 									</tr>
 									<tr>
-										<td>Apellido</td>
+										<td class="col-md-4 ">Apellido</td>
 										<td><input type="text" name="apellido" id="apellido" value="{{ $cliente->apellido }}"></td>
 									</tr>
 									<tr>
-										<td>DNI</td>
+										<td class="col-md-4 ">DNI</td>
 										<td><input type="text" name="dni" id="dni" value="{{ $cliente->dni }}"></td>
 									</tr>	
 									<tr>
-										<td>Direccion</td>
+										<td class="col-md-4 ">Direccion</td>
 										<td><input type="text" name="direccion" id="direccion" value="{{ $cliente->direccion }}"></td>
 									</tr>	
 									<tr>
-										<td>Telefono</td>
+										<td class="col-md-4 ">Telefono</td>
 										<td><input type="text" name="telefono" id="telefono" value="{{ $cliente->telefono }}"></td>
 									</tr>
 									<tr>
-										<td>Tipo Cuota</td>
+										<td class="col-md-4 ">Tipo de Cuota</td>
 										<td>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO1" {{ $cliente->tipo_cuota == 'TIPO1' ? "checked" : "" }}>TIPO1<br>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO2" {{ $cliente->tipo_cuota == 'TIPO2' ? "checked" : "" }}>TIPO2<br>
@@ -46,7 +46,7 @@
 									</tr>										
 								</table>
 
-								<button type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
+								<button  type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
 		                     </form>
   				
 						</div>
