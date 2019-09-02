@@ -165,6 +165,7 @@ class ReciboController extends Controller
                     ->where('id_recibo',$recibo->id);                    
                     
         return view('recibos.show',compact('recibo','cliente','cuotas'));       
+        //return view('recibos.pdf_view',compact('recibo','cliente','cuotas'));       
     }
 
     /**
@@ -242,7 +243,7 @@ class ReciboController extends Controller
                     
 
 
-        $pdf = PDF::loadView('pdf_view', compact('recibo','cliente','cuotas'));  
+        $pdf = PDF::loadView('recibos.pdf_view', compact('recibo','cliente','cuotas'));  
         return $pdf
             ->download('recibo'.$recibo->id.'.pdf');
     }

@@ -54,7 +54,8 @@ body {
   margin: 50px 0;
   padding: 0 50px;
   background: #fff;
-  
+  }
+
   .receipt-line {
     margin-bottom: 10px;
     border-bottom: 1px solid #000;
@@ -64,49 +65,73 @@ body {
     text-align: center;
     margin: 0;
   }
+
+
+.headerLogo {
+  width: 50px;
+  padding: 15px;
 }
+
+.header {
+  width: 100px;
+  padding: 15px;
+  font-size: 12px;
+}
+
+
 </style>
 
 <div class="receipt-main">
-  <p class="receipt-title">Recibo</p>
-  
-  <div class="receipt-section pull-left">
-    <span class="receipt-label text-large">Número:</span>
-    <span class="text-large">{{ $recibo->id}}</span>
-  </div>
+<div >
+  <table>
+    <tr >
+      <td class="headerLogo">
+        SP
+      </td>
 
-  <div class="receipt-section pull-left">
-    <span class="receipt-label text-large">Fecha:</span>
-    <span class="text-large">{{ $recibo->created_at}}</span>
-  </div>
+      <td class="header">
+        AUTOVIA 2 Km 380<br>
+        Barrio La Armonia<br>
+        Mar Chiquita<br>
+        Pcia. Buenos Aires
+      </td>
+      <td class="header">
+        <span class="receipt-label text-large" >RESUMEN</span><br>
+        De Cuenta<br>
+        <span class="receipt-label text-large">X</span>
+      </td>
+      <td class="header" >
+        Nº 0000{{ $recibo->id}}<br>
+        Fecha: {{ $recibo->created_at}}<br>
+        No valido como  factura
+      </td>
+    </tr>
+  
+  </table>
+</div>
+
+
+<div class="receipt-section">
+    <span class="receipt-label">Apellido y Nombre:</span>
+    <span>{{ $cliente->apellido}} {{ $cliente->nombre}}</span>
+</div>
   
 <div class="receipt-section">
-    <span class="receipt-label">Cliente:</span>
-    <span>{{ $cliente->nombre}} {{ $cliente->apellido}}</span>
-  </div>
-  
-  <div class="receipt-section">
     <span class="receipt-label">Direccion:</span>
     <span>{{ $cliente->direccion}}</span>
-  </div>
+</div>
 
 <div class="receipt-section">
     <span class="receipt-label">Telefono:</span>
     <span>{{ $cliente->telefono}}</span>
-  </div>
-
+</div>
 
 <div class="receipt-section">
     <span class="receipt-label">Forma de pago:</span>
     <span>{{ $recibo->forma_pago}}</span>
-  </div>
-  
-<div class="receipt-section">
-    <span class="receipt-label text-large">Cuotas:</span>
-  </div>
+</div>
 
-
-	 <div class="pull-right receipt-section">
+<div class="pull-right receipt-section">
 		<table>
 			<thead>
 				<tr>
@@ -129,18 +154,30 @@ body {
 			</tbody>								
 			
 		</table>
-	 </div>
+</div>
  
-  <div class="pull-right receipt-section">
-    <span class="text-large receipt-label">Importe:</span>
+<div class="pull-right receipt-section">
+
+@if ( $cliente->tipo_cuota == 'TIPO1')
+  <span class="text-large receipt-label">Importe:</span>
+@else
+  <span class="text-large receipt-label">Saldo:</span>
+@endif
     <span class="text-large">{{ $recibo->importe}}</span>
+</div>
+
+<div class="receipt-section">
+
+      
+    <span>Sr Vecino</span>
+    <span>
+      El pago a facturar en el corriente mes corresponde a los servicios del anterior
+      razon por la cual es imprecindible el puntual cumplimiento del  mismo, dado que esta
+      destinado a salarios, cargas sociales, seguros con vencimientos fijos.
+
+    </span>
   </div>
 
 </div>
-
-
-
-</div>
-
 </body>
 </html>
