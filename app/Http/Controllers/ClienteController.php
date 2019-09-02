@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ClienteController extends Controller
 {
@@ -33,7 +34,11 @@ class ClienteController extends Controller
     public function create()
     {
         //$cat = Cliente::orderBy('nombre','ASC')->pluck('nombre','id');
-        return view('clientes.create');    
+
+        if(Auth::user()->isAdmin())
+            return view('clientes.create');
+        else
+            return back()->with('error','No tiene permiso para crear clientes.');
     }
 
   

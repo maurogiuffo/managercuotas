@@ -27,15 +27,15 @@
 				
 				
 				<div class="card-body">
-					<div>
-						<a href="{{route('clientes.create')}}" class="btn btn-sm btn-primary btn-sm-right">
-							Crear
-						</a>
-					</div>
 					
-
-
-
+					@if(Auth::user()->isAdmin())
+						<div>
+							<a href="{{route('clientes.create')}}" class="btn btn-sm btn-primary btn-sm-right">
+								Crear
+							</a>
+						</div>                            
+					@endif
+					
 				  	<table width="100%">
 				  		<thead>
 				  			<tr>
