@@ -8,7 +8,7 @@ class Recibo extends Model
 {
     //
   	protected $fillable = [
-		'id_cliente','id_user','codigo','importe'
+		'id_cliente','id_user','codigo','importe','forma_pago'
 	];
 
  

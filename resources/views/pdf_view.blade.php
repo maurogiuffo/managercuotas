@@ -1,7 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
- <title>Recibo</title>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
+<head>
+ <title>Recibo</title>
+</head>
+
+<body>
+  
  <style>
 body {
   padding: 50px;
@@ -61,9 +66,7 @@ body {
   }
 }
 </style>
-</head>
-<body>
-  
+
 <div class="receipt-main">
   <p class="receipt-title">Recibo</p>
   
@@ -87,12 +90,18 @@ body {
     <span>{{ $cliente->direccion}}</span>
   </div>
 
-   <div class="receipt-section">
+<div class="receipt-section">
     <span class="receipt-label">Telefono:</span>
     <span>{{ $cliente->telefono}}</span>
   </div>
 
-  <div class="receipt-section">
+
+<div class="receipt-section">
+    <span class="receipt-label">Forma de pago:</span>
+    <span>{{ $recibo->forma_pago}}</span>
+  </div>
+  
+<div class="receipt-section">
     <span class="receipt-label text-large">Cuotas:</span>
   </div>
 
@@ -132,5 +141,6 @@ body {
 
 
 </div>
- </body>
+
+</body>
 </html>

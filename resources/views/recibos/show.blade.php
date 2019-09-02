@@ -36,6 +36,12 @@
 									<td class="col-md-4 ">Importe</td>
 									<td>{{ $recibo->importe}} </td>
 								</tr>
+
+								<tr>
+										<td class="col-md-4 ">Forma de pago</td>
+										<td>{{ $recibo->forma_pago}}</td>
+										
+									</tr>	
 							</table>
 							</div>
 							<div class="form-group row">

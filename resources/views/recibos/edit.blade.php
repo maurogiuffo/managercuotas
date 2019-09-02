@@ -16,6 +16,7 @@
 								<input type="hidden" name="id" id="id" value="{{ $cuota->id }}">
 
 								<table>
+									
 									<tr>
 										<td>Mes</td>
 										<td><input type="text" name="mes" id="mes" value="{{ $cuota->mes }}"></td>

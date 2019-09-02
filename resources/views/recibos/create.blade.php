@@ -71,7 +71,17 @@
 										<td class="col-md-4 ">Direccion</td>
 										<td>{{ $cliente->direccion}}</td>
 									</tr>
-									
+
+									<tr>
+										<td class="col-md-4 ">Forma de pago</td>
+										<td>
+											<select id="forma_pago" name="forma_pago">
+												<option value="EFECTIVO" selected>EFECTIVO</option>
+												<option value="DEBITO">DEBITO</option>
+												<option value="CHEQUE">CHEQUE</option>
+											</select>
+										</td>
+									</tr>	
 									
 								</table>
 

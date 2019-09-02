@@ -31,10 +31,6 @@ class ReciboController extends Controller
 
         $busqueda = $request->get('busqueda');
 
-
-
-
-
         $recibos= Recibo::with('cliente')
             ->orderBy('id','desc')
            // ->nombre($nombre)
@@ -83,6 +79,7 @@ class ReciboController extends Controller
                 $recibo->id_cliente = $request->id_cliente;
                 $recibo->id_user=Auth::user()->id;  
                 $recibo->importe=0;  
+                $recibo->forma_pago=$request->forma_pago;  
 
                 $recibo->save();
 
