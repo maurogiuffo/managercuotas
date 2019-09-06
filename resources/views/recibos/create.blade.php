@@ -3,125 +3,123 @@
 @section('content')
 <div class="container">
 
-
-<div class="row justify-content-center">
-		<div class="col-md-8 col-offset-2">
-			<div class="card">
-				<div class="card-header">
-					Generar Cuotas Faltantes
-				</div>
-					<div class="card-body">
-						<div class="form-group row">
-
-							
-
-							<form method="POST" action="{{ route('recibos.store')}}">
-								@csrf
-								<input type="hidden" name="generarnueva"  value="1">
-								<input type="hidden" name="id_cliente" id="id_cliente" value="{{ $cliente->id }}">
-
-								<select name="id_cuota" >
-									<option value ="-1">Seleccionar un Mes/Año a generar</option>
-									@foreach($cuotasacrear as $cuota )
-										<option value ="{{ $cuota->id}}">{{ $cuota->anio}} - {{ $cuota->mes}}</option>
-									@endforeach
-									
-								</select>
-
-								<button type="submit" class="btn btn-sm btn-primary">{{ __('Generar') }}</button>	
-		                     </form>
-
-
-						</div>
-					</div>
-			</div>
-			
-		</div>
-		
-	</div>
-
-
-
-
-
-
-
-
 	<div class="row justify-content-center">
 		<div class="col-md-8 col-offset-2">
 			<div class="card">
-				<div class="card-header">
-					Crear Recibo
-				</div>
-					<div class="card-body">
-						<div class="form-group row">
+			
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recibo</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cuotas Faltantes</a>
+					</li>
 
-							<form method="POST" action="{{ route('recibos.store')}}">
-								@csrf
-								<input type="hidden" name="generarnueva"  value="0">
+				</ul>
+			
+				<div class="card-body">
+					
 
-								<input type="hidden" name="id_cliente" id="id_cliente" value="{{ $cliente->id }}">
+					
+					<div class="tab-content" id="myTabContent">
 
-								<table>
-									<tr>
-										<td class="col-md-4 ">Cliente</td>
-										<td>{{ $cliente->nombre}} {{ $cliente->apellido}}</td>
-									</tr>
-									<tr>
-										<td class="col-md-4 ">Direccion</td>
-										<td>{{ $cliente->direccion}}</td>
-									</tr>
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						
+							<div class="form-group row">
+								<form method="POST" action="{{ route('recibos.store')}}">
+									@csrf
+									<input type="hidden" name="generarnueva"  value="0">
 
-									<tr>
-										<td class="col-md-4 ">Forma de pago</td>
-										<td>
-											<select id="forma_pago" name="forma_pago">
-												<option value="EFECTIVO" selected>EFECTIVO</option>
-												<option value="DEBITO">DEBITO</option>
-												<option value="CHEQUE">CHEQUE</option>
-											</select>
-										</td>
-									</tr>	
-									
-								</table>
+									<input type="hidden" name="id_cliente" id="id_cliente" value="{{ $cliente->id }}">
 
-								<table>
-									<thead>
+									<table>
 										<tr>
-										<th class="col-md-4 ">Seleccionar</th>
-										<th class="col-md-4 " >Año</th>
-										<th class="col-md-4 " >Mes</th>
-										<th class="col-md-4 " >Importe</th>
+											<td class="col-md-4 ">Cliente</td>
+											<td>{{ $cliente->nombre}} {{ $cliente->apellido}}</td>
+										</tr>
+										<tr>
+											<td class="col-md-4 ">Direccion</td>
+											<td>{{ $cliente->direccion}}</td>
+										</tr>
+
+										<tr>
+											<td class="col-md-4 ">Forma de pago</td>
+											<td>
+												<select id="forma_pago" name="forma_pago">
+													<option value="EFECTIVO" selected>EFECTIVO</option>
+													<option value="DEBITO">DEBITO</option>
+													<option value="CHEQUE">CHEQUE</option>
+												</select>
+											</td>
+										</tr>	
 										
-										</tr>
-									</thead>
-									<tbody>
-										@foreach($cuotas as $cuota )
-										<tr>
-											<td class="col-md-4 "><input name="id_cuota[{{ $cuota->id}}]" type="checkbox" value="{{ $cuota->id}}"></td>
+									</table>
 
-											<td class="col-md-4 " >{{ $cuota->cuota->anio}}</td>
-											<td class="col-md-4 " >{{ $cuota->cuota->mes}}</td>
-											<td class="col-md-4 " >{{ $cuota->saldo}}</td>
+									<table>
+										<thead>
+											<tr>
+											<th class="col-md-4 ">Seleccionar</th>
+											<th class="col-md-4 " >Año</th>
+											<th class="col-md-4 " >Mes</th>
+											<th class="col-md-4 " >Importe</th>
+											
+											</tr>
+										</thead>
+										<tbody>
+											@foreach($cuotas as $cuota )
+											<tr>
+												<td class="col-md-4 "><input name="id_cuota[{{ $cuota->id}}]" type="checkbox" value="{{ $cuota->id}}"></td>
 
-										</tr>
-										@endforeach
-									</tbody>
-								</table>
+												<td class="col-md-4 " >{{ $cuota->cuota->anio}}</td>
+												<td class="col-md-4 " >{{ $cuota->cuota->mes}}</td>
+												<td class="col-md-4 " >{{ $cuota->saldo}}</td>
+
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
 
 
-								<button type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
-		                     </form>
-  				
-
-
+									<button type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
+								</form>
+							</div>
 						</div>
+						
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+							<div class="form-group row">
+								<form method="POST" action="{{ route('recibos.store')}}">
+									@csrf
+									<input type="hidden" name="generarnueva"  value="1">
+									<input type="hidden" name="id_cliente" id="id_cliente" value="{{ $cliente->id }}">
+
+									<select name="id_cuota" >
+										<option value ="-1">Seleccionar un Mes/Año a generar</option>
+										@foreach($cuotasacrear as $cuota )
+											<option value ="{{ $cuota->id}}">{{ $cuota->anio}} - {{ $cuota->mes}}</option>
+										@endforeach
+										
+									</select>
+
+									<button type="submit" class="btn btn-sm btn-primary">{{ __('Generar') }}</button>	
+								</form>
+							</div>
+						
+						
+						</div>
+						
 					</div>
+
+
+				</div>
+					
 			</div>
 			
 		</div>
 		
 	</div>
+
+
 	
 </div>
 
