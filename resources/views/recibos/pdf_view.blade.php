@@ -3,10 +3,8 @@
 
 <head>
  <title>Recibo</title>
-</head>
 
-<body>
-  
+
  <style>
 body {
   padding: 50px;
@@ -54,22 +52,22 @@ body {
   margin: 50px 0;
   padding: 0 50px;
   background: #fff;
-  }
+}
 
-  .receipt-line {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #000;
-  }
+.receipt-line {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
   
-  p {
-    text-align: center;
-    margin: 0;
-  }
+p {
+  text-align: center;
+  margin: 0;
+}
 
 
 .headerLogo {
-  width: 50px;
-  padding: 15px;
+  width: 100px;
+  padding: 5px;
 }
 
 .header {
@@ -81,12 +79,17 @@ body {
 
 </style>
 
+</head>
+
+<body>
+  
+
 <div class="receipt-main">
 <div >
   <table>
     <tr >
       <td class="headerLogo">
-        SP
+        <img class="headerLogo" src="logo-sp.jpeg" alt="SP">
       </td>
 
       <td class="header">
@@ -158,11 +161,11 @@ body {
  
 <div class="pull-right receipt-section">
 
-@if ( $cliente->tipo_cuota == 'TIPO1')
-  <span class="text-large receipt-label">Importe:</span>
-@else
-  <span class="text-large receipt-label">Saldo:</span>
-@endif
+  @if ( $cliente->tipo_cuota == 'TIPO1')
+    <span class="text-large receipt-label">Importe:</span>
+  @else
+    <span class="text-large receipt-label">Saldo:</span>
+  @endif
     <span class="text-large">{{ $recibo->importe}}</span>
 </div>
 
@@ -179,5 +182,6 @@ body {
   </div>
 
 </div>
+
 </body>
 </html>
