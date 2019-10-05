@@ -11,12 +11,32 @@
 					<div>
 							<form method="GET" action="{{ route('recibos.index') }}" class="navbar-form pull-right"> 
 							    <div class="input-group"> 
-					                <input type="text" class="form-control" name="busqueda" placeholder="Busqueda" value ="{{$busqueda}}"> 
-									 <span class="input-group-btn"> 
-					                    <button type="submit" class="btn btn-default"> 
-					                        <span class="glyphicon glyphicon-search">Buscar</span> 
-					                    </button> 
-					                </span> 
+							    	<div >
+							    		Desde
+					                	<input class="form-control" id="fechaInicial" name="fechaInicial"  placeholder="AA/MM/DD" value="{{$fechaInicial}}"  type="date"/>
+					                </div>
+					                <div >
+					                	Hasta
+					                	<input class="form-control" id="fechaFinal" name="fechaFinal"  placeholder="AA/MM/DD" value="{{$fechaFinal}}" type="date"/>
+					                </div>
+					                <div>
+			                	 		Forma de Pago
+										<select class="form-control" id="forma_pago" name="forma_pago">
+											<option value="TODOS" >TODOS</option>
+											<option value="EFECTIVO" >EFECTIVO</option>
+											<option value="DEBITO" >DEBITO</option>
+											<option value="CHEQUE">CHEQUE</option>
+										</select>
+									</div>
+									<div class="col-md-10 col-offset-2">
+									 
+										 <span class="input-group-btn"> 
+						                    <button type="submit" class="btn btn-default"> 
+						                        <span class="glyphicon glyphicon-search">Buscar</span> 
+						                    </button> 
+						                </span> 
+
+					                </div>
 					            </div> 
 						    </form> 
 						</div>
@@ -36,6 +56,7 @@
 				  				<th>Fecha</th>
 				  				
 				  				<th>Cliente</th>
+				  				<th>Forma de Pago</th>
 				  				<th>Importe</th>
 								  
 				  				<th></th>
@@ -49,6 +70,7 @@
 				  				<td>{{ $recibo->id}}</td>
 				  				<td>{{ $recibo->created_at}}</td>
 				  				<td>{{ $recibo->cliente->nombre }} {{ $recibo->cliente->apellido}}</td>
+				  				<td>{{ $recibo->forma_pago}}</td>
 				  				<td>{{ $recibo->importe}}</td>
 								<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
 								@if(Auth::user()->isSuperAdmin())
@@ -70,6 +92,9 @@
 				  	</table>
 					{{$recibos->render()}}
 
+				<div class="card-body">
+					Total: {{$total}}
+				</div>
 				</div>
 			</div>
 			

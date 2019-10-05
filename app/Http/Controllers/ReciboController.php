@@ -29,13 +29,36 @@ class ReciboController extends Controller
     public function index(Request $request)
     {
 
+        // eliminamos validaciones innecesarias y ponemos la fecha de hoy por defecto en ambas variables
+        $fechaInicial = date('Y-m-d');
+        $fechaFinal = date('Y-m-d');
+
+        if(! is_null($request->fechaInicial) && ! empty($request->fechaInicial) && ! is_null($request->fechaFinal) || ! empty($request->fechaFinal))
+        {
+            $fechaInicial = $request->fechaInicial;
+            $fechaFinal = $request->fechaFinal;
+        }
+
         $busqueda = $request->get('busqueda');
+        $forma_pago = $request->get('forma_pago');
 
         $recibos= Recibo::with('cliente')
             ->orderBy('id','desc')
-           // ->nombre($nombre)
-            ->paginate();
-        return view('recibos.index',compact('recibos','busqueda'));  
+            ->whereBetween('created_at', [$fechaInicial, $fechaFinal.' 23:59:59']);
+
+        $total= Recibo::
+            whereBetween('created_at', [$fechaInicial, $fechaFinal.' 23:59:59']);
+
+        if($forma_pago != 'TODOS')
+        {
+            $recibos = $recibos->where('forma_pago','like',"%$forma_pago%");
+            $total = $total->where('forma_pago','like',"%$forma_pago%");
+        }
+
+        $recibos = $recibos->paginate(1000);
+        $total = $total->sum('importe');
+
+        return view('recibos.index',compact('recibos','busqueda','fechaInicial','fechaFinal','forma_pago','total'));  
     }
 
     /**
