@@ -1,32 +1,37 @@
 <?php
-/*
 
-$site_url = 'http://www.receptoriapatagonia.com/servicios';
+if ($_GET["codigo"]=="asdQWE123")
+{
+	$site_url = 'http://www.receptoriapatagonia.com/servicios';
 
-$laravel_dir = '/home2/receptoriapatago/servicios-laravel';
+	$laravel_dir = '/home2/receptoriapatago/servicios-laravel';
 
-echo $laravel_dir ;
-
-
-
-require $laravel_dir . '/vendor/autoload.php';
-
-$app = require_once $laravel_dir . '/bootstrap/app.php';
-
-$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
-
-echo 'Installing...<br>';
+	echo $laravel_dir ;
 
 
 
+	require $laravel_dir . '/vendor/autoload.php';
 
-$kernel->call('migrate');
-//$kernel->call('migrate:fresh', ['--force' => true]);
+	$app = require_once $laravel_dir . '/bootstrap/app.php';
 
-//echo 'Seeding...<br>';
-//$kernel->call('db:seed', ['--force' => true]);
+	$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 
-// redirect
-echo "<script>window.location = '$site_url'</script>";
+	echo 'Installing...<br>';
 
-*/
+
+
+
+	$kernel->call('migrate:fresh');
+	//$kernel->call('migrate:fresh', ['--force' => true]);
+
+	echo 'Seeding...<br>';
+	$kernel->call('db:seed', ['--force' => true]);
+
+	// redirect
+	//echo "<script>window.location = '$site_url'</script>";
+	echo 'SEEDED OK!';
+}
+else
+{
+	echo 'Unauthorized!';
+}
