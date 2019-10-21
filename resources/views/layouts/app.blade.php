@@ -86,44 +86,55 @@
 
         
         <main class="py-4">
+          <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-offset-2">
+                      @if(session('info'))
+                        <div class="row">
+                            <div class="col-md-8">
+                                 <div class="alert alert-success" role="alert">
+                                      {{ session('info') }}
+                                 </div>
+                            </div>
+                        </div>
+                        @endif
 
-              @if(session('info'))
-                <div class="row">
-                    <div class="col-md-8">
-                         <div class="alert alert-success" role="alert">
-                              {{ session('info') }}
-                         </div>
+                        @if(session('error'))
+                        <div class="row">
+                            <div class="col-md-8">
+                                 <div class="alert " role="danger">
+                                      {{ session('error') }}
+                                 </div>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if(count($errors))
+                        <div class="row">
+                            <div class="col-md-8">
+                                 <div class="alert " role="danger">
+                                      <ul>
+                                          @foreach($errors->all() as $error)
+                                          <li>
+                                              {{$error}}
+                                          </li>
+
+                                          @endforeach
+                                      </ul>
+                                 </div>
+                            </div>
+                        </div>
+                        @endif
+                
+                        @guest
+                         @else
+                            <a href="{{ URL::previous() }}" class="btn btn-sm btn-primary">Atras</a>
+                         @endguest
+                        </div>
                     </div>
                 </div>
-                @endif
 
-                @if(session('error'))
-                <div class="row">
-                    <div class="col-md-8">
-                         <div class="alert " role="danger">
-                              {{ session('error') }}
-                         </div>
-                    </div>
-                </div>
-                @endif
-
-                @if(count($errors))
-                <div class="row">
-                    <div class="col-md-8">
-                         <div class="alert " role="danger">
-                              <ul>
-                                  @foreach($errors->all() as $error)
-                                  <li>
-                                      {{$error}}
-                                  </li>
-
-                                  @endforeach
-                              </ul>
-                         </div>
-                    </div>
-                </div>
-                @endif
-                    @yield('content')
+                @yield('content')
         </main>
     </div>
 </body>

@@ -8,6 +8,9 @@
 			<div class="card">
 				<div class="card-header">
 					Lista de Clientes
+				</div>
+				<div class="card-header">
+					
 					<div>
 							<form method="GET" action="{{ route('clientes.index') }}" class="navbar-form pull-right"> 
 							    <div class="input-group"> 
