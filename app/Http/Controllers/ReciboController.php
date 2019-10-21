@@ -39,7 +39,6 @@ class ReciboController extends Controller
             $fechaFinal = $request->fechaFinal;
         }
 
-        $busqueda = $request->get('busqueda');
         $forma_pago = $request->get('forma_pago');
 
         $recibos= Recibo::with('cliente')
@@ -58,8 +57,12 @@ class ReciboController extends Controller
         $recibos = $recibos->paginate(1000);
         $total = $total->sum('importe');
 
-        return view('recibos.index',compact('recibos','busqueda','fechaInicial','fechaFinal','forma_pago','total'));  
+        return view('recibos.index',compact('recibos','fechaInicial','fechaFinal','forma_pago','total'));  
     }
+
+
+   
+
 
     /**
      * Show the form for creating a new resource.
@@ -247,7 +250,7 @@ class ReciboController extends Controller
        // return back()->with('info','Recibo eliminado');
     }
 
-    public function imprimir(Request $recibo)
+    public function imprimir_recibo(Request $recibo)
     {
         /*
         $data = [ 'title' => 'Recibo Nº '.$recibo->id, 
@@ -266,10 +269,49 @@ class ReciboController extends Controller
                     
 
 
-        $pdf = PDF::loadView('recibos.pdf_view', compact('recibo','cliente','cuotas'));  
+        $pdf = PDF::loadView('recibos.pdf_view_recibo', compact('recibo','cliente','cuotas'));  
         return $pdf
             ->download('recibo'.$recibo->id.'.pdf');
     }
+
+
+    public function imprimir_lista(Request $request)
+    {
+         // eliminamos validaciones innecesarias y ponemos la fecha de hoy por defecto en ambas variables
+        $fechaInicial = date('Y-m-d');
+        $fechaFinal = date('Y-m-d');
+
+        if(! is_null($request->fechaInicial) && ! empty($request->fechaInicial) && ! is_null($request->fechaFinal) || ! empty($request->fechaFinal))
+        {
+            $fechaInicial = $request->fechaInicial;
+            $fechaFinal = $request->fechaFinal;
+        }
+
+       
+        $forma_pago = $request->get('forma_pago');
+
+        $recibos= Recibo::with('cliente')
+            ->orderBy('id','desc')
+            ->whereBetween('created_at', [$fechaInicial, $fechaFinal.' 23:59:59']);
+
+        $total= Recibo::
+            whereBetween('created_at', [$fechaInicial, $fechaFinal.' 23:59:59']);
+
+        if($forma_pago != 'TODOS')
+        {
+            $recibos = $recibos->where('forma_pago','like',"%$forma_pago%");
+            $total = $total->where('forma_pago','like',"%$forma_pago%");
+        }
+
+        $recibos = $recibos->paginate(1000);
+        $total = $total->sum('importe');
+
+        $pdf = PDF::loadView('recibos.pdf_view_lista', compact('recibos','fechaInicial','fechaFinal','forma_pago','total'));  
+        return $pdf
+            ->download('lista_recibos.pdf');
+    }
+
+
 
 
     public function createcuota($idcliente)

@@ -74,7 +74,7 @@
 
 					<div class="form-group row">
 						<div class="col-md-4 ">
-							<a href="{{route('recibos.imprimir',[$recibo->id])}}" class="btn btn-sm btn-primary btn-sm-right">Imprimir</a>
+							<a href="{{route('recibos.imprimir_recibo',[$recibo->id])}}" class="btn btn-sm btn-primary btn-sm-right">Imprimir</a>
 						</div>
 					</div>
 				</div>

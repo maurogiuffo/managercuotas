@@ -12,7 +12,6 @@
 					<div>
 						<form method="GET" action="{{ route('recibos.index') }}" class="navbar-form pull-right"> 
 							<table>
-
 								<tr>
 									<td>
 										
@@ -38,6 +37,7 @@
 
 
 									</td>
+								
 									<td>
 										<div class="col-md-10 col-offset-2">
 								 
@@ -50,6 +50,7 @@
 							             </div>
 							           
 									</td>
+									
 								</tr>
 								
 							</table>
@@ -108,8 +109,21 @@
 				<div class="card-body">
 					Total: {{$total}}
 				</div>
+
+				<form method="POST" action="{{ route('recibos.imprimir_lista') }}" class="navbar-form pull-right">
+					@csrf
+	            	<input  id="fechaInicial" name="fechaInicial"  value="{{$fechaInicial}}"  type="hidden"/>
+	            	<input  id="fechaFinal" name="fechaFinal" value="{{$fechaFinal}}" type="hidden"/>
+	            	<input  id="forma_pago" name="forma_pago"  value="{{$forma_pago}}" type="hidden"/>
+	                <button type="submit" class="btn btn-sm btn-primary"> 
+	                    <span >Imprimir</span> 
+	                </button> 
+				</form> 
+
 				</div>
 			</div>
+
+
 			
 		</div>
 		
