@@ -2,6 +2,8 @@
 
 if ($_GET["codigo"]=="asdQWE123")
 {
+
+	/*
 	$site_url = 'http://www.receptoriapatagonia.com/servicios';
 
 	$laravel_dir = '/home2/receptoriapatago/servicios-laravel';
@@ -30,6 +32,7 @@ if ($_GET["codigo"]=="asdQWE123")
 	// redirect
 	//echo "<script>window.location = '$site_url'</script>";
 	echo 'SEEDED OK!';
+	*/
 }
 else
 {
