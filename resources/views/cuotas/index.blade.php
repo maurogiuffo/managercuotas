@@ -60,7 +60,7 @@
 								</td>
 								<td>
 								@if(Auth::user()->isAdmin())
-								<!--
+								
 									<form method="POST" action="{{ route('cuotas.destroy',$cuota->id) }}">
 										  @csrf
 										   @method('DELETE')
@@ -69,7 +69,7 @@
 		                                {{ __('Eliminar') }}
 		                               	</button>	
 									</form>
-								-->
+								
 								@endif
 				  				</td>
 				  			</tr>

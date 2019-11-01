@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cuota;
+use App\CuotaCliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,7 @@ class CuotaController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        
         $busqueda = $request->get('busqueda');
 
         $cuotas= Cuota::orderBy('anio','desc')->orderBy('mes','desc')
@@ -156,7 +157,7 @@ class CuotaController extends Controller
         //
         try
         {
-<
+
             // no se pueden eliminar, no anda la fk cuota->cuota_cliente
 
             //DB::beginTransaction();
@@ -170,8 +171,16 @@ class CuotaController extends Controller
             //DB::commit();
 
             //Cuota::find($cuota->id)->delete();
+            if(CuotaCliente::where('id_cuota','=',$cuota->id)
+                ->where('id_recibo','>',0)
+                ->get()
+                ->isNotEmpty())
+            {
+                return back()->with('info','Cuota cobrada. No se puede eliminar.');
+            }
 
-
+            CuotaCliente::where('id_cuota','=',$cuota->id)->delete();
+            Cuota::find($cuota->id)->delete();
           
         }
         catch(\Illuminate\Database\QueryException $e)

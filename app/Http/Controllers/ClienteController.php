@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Recibo;
+use App\CuotaCliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -118,6 +120,15 @@ class ClienteController extends Controller
     {
         try
         {
+
+            if(Recibo::where('id_cliente','=',$cliente->id)
+                ->get()
+                ->isNotEmpty())
+            {
+                return back()->with('info','Cliente con recibos. No se puede eliminar.');
+            }
+
+            CuotaCliente::where('id_cliente','=',$cliente->id)->delete();
             Cliente::find($cliente->id)->delete();
         }
         catch(\Illuminate\Database\QueryException $e)
