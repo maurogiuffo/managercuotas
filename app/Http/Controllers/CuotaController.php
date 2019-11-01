@@ -85,8 +85,6 @@ class CuotaController extends Controller
             return back()->with('error','Error al generar Cuota. Ya existe.');
         }
 
-        
-
         return redirect()->route('cuotas.index',$cuota->id)
             ->with('info','Cuota creada con éxito');    
     }
@@ -158,11 +156,16 @@ class CuotaController extends Controller
         //
         try
         {
+            DB::beginTransaction();
+            DB::statement("delete from cuotas_clientes where saldo=importe and id_cuota=".$cuota->id);
             Cuota::find($cuota->id)->delete();
+            DB::commit();
+          
         }
         catch(\Illuminate\Database\QueryException $e)
         {
-             return back()->with('error','Error al borrar');
+            DB::rollBack();
+            return back()->with('error','Error al borrar');
         }
 
         return back()->with('info','Cuota eliminado');

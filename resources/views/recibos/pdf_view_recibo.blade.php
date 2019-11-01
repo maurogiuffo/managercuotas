@@ -38,6 +38,10 @@ body {
   font-size: 16px;
 }
 
+.text-small {
+  font-size: 8px;
+}
+
 .receipt-section {
   margin-top: 10px;
 }
@@ -96,7 +100,11 @@ p {
         AUTOVIA 2 Km 380<br>
         Barrio La Armonia<br>
         Mar Chiquita<br>
-        Pcia. Buenos Aires
+        Pcia. Buenos Aires<br>
+        <span class="text-small">
+          Titular: Roberto Daniel Alvarez<br>
+          CUIT: 20-16180883-1
+        </span>
       </td>
       <td class="header">
         <span class="receipt-label text-large" >RESUMEN</span><br>

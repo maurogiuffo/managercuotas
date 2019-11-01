@@ -87,8 +87,8 @@
 				  				<td>{{ $recibo->forma_pago}}</td>
 				  				<td>{{ $recibo->importe}}</td>
 								<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
-								@if(Auth::user()->isSuperAdmin())
-				  				<td><a href="{{ route('recibos.edit',$recibo->id)}}" class="btn btn-sm btn-primary">Editar</a></td>
+								@if(Auth::user()->isAdmin())
+				  				<td><!--<a href="{{ route('recibos.edit',$recibo->id)}}" class="btn btn-sm btn-primary">Editar</a>--></td>
 				  				<td>
 									<form method="POST" action="{{ route('recibos.destroy',$recibo->id) }}">
 										  @csrf
@@ -105,21 +105,22 @@
 				  		</tbody>
 				  	</table>
 					{{$recibos->render()}}
+					
+				@if(Auth::user()->isAdmin())
+					<div class="card-body">
+						Total: {{$total}}
+					</div>
 
-				<div class="card-body">
-					Total: {{$total}}
-				</div>
-
-				<form method="POST" action="{{ route('recibos.imprimir_lista') }}" class="navbar-form pull-right">
-					@csrf
-	            	<input  id="fechaInicial" name="fechaInicial"  value="{{$fechaInicial}}"  type="hidden"/>
-	            	<input  id="fechaFinal" name="fechaFinal" value="{{$fechaFinal}}" type="hidden"/>
-	            	<input  id="forma_pago" name="forma_pago"  value="{{$forma_pago}}" type="hidden"/>
-	                <button type="submit" class="btn btn-sm btn-primary"> 
-	                    <span >Imprimir</span> 
-	                </button> 
-				</form> 
-
+					<form method="POST" action="{{ route('recibos.imprimir_lista') }}" class="navbar-form pull-right">
+						@csrf
+		            	<input  id="fechaInicial" name="fechaInicial"  value="{{$fechaInicial}}"  type="hidden"/>
+		            	<input  id="fechaFinal" name="fechaFinal" value="{{$fechaFinal}}" type="hidden"/>
+		            	<input  id="forma_pago" name="forma_pago"  value="{{$forma_pago}}" type="hidden"/>
+		                <button type="submit" class="btn btn-sm btn-primary"> 
+		                    <span >Imprimir</span> 
+		                </button> 
+					</form> 
+				@endif
 				</div>
 			</div>
 
