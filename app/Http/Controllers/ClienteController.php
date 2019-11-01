@@ -18,12 +18,11 @@ class ClienteController extends Controller
 
     public function index(Request $request)
     {
-
         $nombre = $request->get('nombre');
-    
 
         $clientes= Cliente::
-            orderBy('nombre')
+            orderBy('apellido')
+            ->orderBy('nombre')
             ->nombre($nombre)
             ->paginate();
         

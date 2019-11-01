@@ -59,7 +59,8 @@
 				  					<a href="{{ route('cuotas.edit',$cuota->id)}}" class="btn btn-sm btn-primary">Editar</a>
 								</td>
 								<td>
-								@if(Auth::user()->isSuperAdmin())
+								@if(Auth::user()->isAdmin())
+								<!--
 
 									<form method="POST" action="{{ route('cuotas.destroy',$cuota->id) }}">
 										  @csrf
@@ -69,6 +70,7 @@
 		                                {{ __('Eliminar') }}
 		                               	</button>	
 									</form>
+								-->
 								@endif
 				  				</td>
 				  			</tr>

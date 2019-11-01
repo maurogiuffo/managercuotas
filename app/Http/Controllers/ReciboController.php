@@ -237,17 +237,21 @@ class ReciboController extends Controller
     public function destroy(Recibo $recibo)
     {
         //
-        /*
+        
         try
         {
+            DB::beginTransaction();
+            DB::statement("update cuotas_clientes set id_recibo=0,saldo=importe where id_recibo=".$recibo->id);
             Recibo::find($recibo->id)->delete();
+            DB::commit();
         }
         catch(\Illuminate\Database\QueryException $e)
         {
+            DB::rollBack();
              return back()->with('error','Error al borrar');
-        }*/
+        }
 
-       // return back()->with('info','Recibo eliminado');
+        return back()->with('info','Recibo eliminado');
     }
 
     public function imprimir_recibo(Request $recibo)

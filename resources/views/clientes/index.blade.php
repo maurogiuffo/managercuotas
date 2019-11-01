@@ -42,8 +42,8 @@
 				  	<table width="100%">
 				  		<thead>
 				  			<tr>
-				  				<th >Nombre</th>
 				  				<th>Apellido</th>
+				  				<th >Nombre</th>
 				  				<th>DNI</th>
 				  				<th>Direccion</th>
 				  				<th>Telefono</th>
@@ -56,8 +56,8 @@
 				  		<tbody>
 				  			@foreach($clientes as $cliente )
 				  			<tr>
-				  				<td>{{ $cliente->nombre}}</td>
 				  				<td>{{ $cliente->apellido}}</td>
+				  				<td>{{ $cliente->nombre}}</td>
 				  				<td>{{ $cliente->dni}}</td>
 				  				<td>{{ $cliente->direccion}}</td>
 				  				<td>{{ $cliente->telefono}}</td>
