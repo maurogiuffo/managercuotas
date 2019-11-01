@@ -156,15 +156,28 @@ class CuotaController extends Controller
         //
         try
         {
-            DB::beginTransaction();
-            DB::statement("delete from cuotas_clientes where saldo=importe and id_cuota=".$cuota->id);
-            Cuota::find($cuota->id)->delete();
-            DB::commit();
+<
+            // no se pueden eliminar, no anda la fk cuota->cuota_cliente
+
+            //DB::beginTransaction();
+            //DB::statement("delete from recibos ");
+            //DB::statement("delete from cuotas_clientes ");
+            //DB::statement("delete from cuotas");
+
+            //DB::statement("delete from cuotas_clientes where id_recibo=0 and id_cuota=".$cuota->id);
+            //DB::statement("delete from cuotas where id=".$cuota->id);
+
+            //DB::commit();
+
+            //Cuota::find($cuota->id)->delete();
+
+
           
         }
         catch(\Illuminate\Database\QueryException $e)
         {
-            DB::rollBack();
+
+            //DB::rollBack();
             return back()->with('error','Error al borrar');
         }
 
