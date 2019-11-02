@@ -8,10 +8,12 @@
 				<div class="card-header">
 					Lista de Recibos
 				</div>
+				@if(Auth::user()->isAdmin())
 				<div class="card-header">
 					<div>
 						<form method="GET" action="{{ route('recibos.index') }}" class="navbar-form pull-right"> 
 							<table>
+
 								<tr>
 									<td>
 										
@@ -58,7 +60,7 @@
 					    </form> 
 					</div>
 				</div>
-
+				@endif
 				
 				<div class="card-body">
 					
