@@ -41,7 +41,18 @@ class ReciboController extends Controller
 
         $forma_pago = $request->get('forma_pago');
 
-        $recibos= Recibo::with('cliente')
+        if(Auth::user()->isAdmin())
+        {
+            $id_usuario = $request->get('id_usuario');
+        }
+        else
+        {
+            $id_usuario = Auth::user()->id;
+        }
+
+        
+
+        $recibos= Recibo::with('cliente')->with('user')
             ->orderBy('id','desc')
             ->whereBetween('created_at', [$fechaInicial, $fechaFinal.' 23:59:59']);
 
@@ -52,6 +63,12 @@ class ReciboController extends Controller
         {
             $recibos = $recibos->where('forma_pago','like',"%$forma_pago%");
             $total = $total->where('forma_pago','like',"%$forma_pago%");
+        }
+
+        if($id_usuario != '')
+        {
+            $recibos = $recibos->where('id_user','=',$id_usuario);
+            $total = $total->where('id_user','=',$id_usuario);
         }
 
         $recibos = $recibos->paginate(1000);
@@ -75,7 +92,6 @@ class ReciboController extends Controller
         $cliente= Cliente::find($idcliente);
 
         $cuotas= CuotaCliente::with('cuota')
-                    
                     ->where('saldo', '>', 0)
                     ->where('id_cliente',$idcliente)
                     ->orderBy('created_at','desc')
@@ -100,32 +116,32 @@ class ReciboController extends Controller
             if($request->id_cuota == null)
                 return back()->with('error','Error al grabar recibo.');
                 
-                DB::beginTransaction();
-                $recibo = new Recibo;
-                $recibo->id_cliente = $request->id_cliente;
-                $recibo->id_user=Auth::user()->id;  
-                $recibo->importe=0;  
-                $recibo->forma_pago=$request->forma_pago;  
+            DB::beginTransaction();
+            $recibo = new Recibo;
+            $recibo->id_cliente = $request->id_cliente;
+            $recibo->id_user=Auth::user()->id;  
+            $recibo->importe=0;  
+            $recibo->forma_pago=$request->forma_pago;  
 
-                $recibo->save();
+            $recibo->save();
 
-                $importe=0;
+            $importe=0;
 
-                foreach($request->id_cuota as $id) 
-                {
-                    $cuota=CuotaCliente::find($id);
-                    $cuota->id_recibo = $recibo->id;
-                    $cuota->saldo=0;
-                    $importe += $cuota->importe;
+            foreach($request->id_cuota as $id) 
+            {
+                $cuota=CuotaCliente::find($id);
+                $cuota->id_recibo = $recibo->id;
+                $cuota->saldo=0;
+                $importe += $cuota->importe;
 
-                    $cuota->save();
-                }
+                $cuota->save();
+            }
 
-                $recibo->importe = $importe;
-                
-                $recibo->save();
+            $recibo->importe = $importe;
+            
+            $recibo->save();
 
-                DB::commit();
+            DB::commit();
        
 
             return redirect()->route('recibos.show',$recibo)
@@ -236,8 +252,7 @@ class ReciboController extends Controller
      */
     public function destroy(Recibo $recibo)
     {
-        //
-        
+       
         try
         {
             DB::beginTransaction();
@@ -270,8 +285,6 @@ class ReciboController extends Controller
         $cuotas= CuotaCliente::with('cuota')
                     ->get()
                     ->where('id_recibo',$recibo->id);                    
-                    
-
 
         $pdf = PDF::loadView('recibos.pdf_view_recibo', compact('recibo','cliente','cuotas'));  
         return $pdf

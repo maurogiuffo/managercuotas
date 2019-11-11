@@ -34,7 +34,23 @@
 													<option value="DEBITO" >DEBITO</option>
 													<option value="CHEQUE">CHEQUE</option>
 												</select>
+												
+												<script type="text/javascript">
+													document.getElementById('forma_pago').value= {{$forma_pago}};
+												</script>
+
+
 											</div>
+
+											 <div>
+					                	 		Usuario
+												<select class="form-control" id="id_usuario" name="id_usuario">
+													<option value="" >TODOS</option>
+													<option value="4" >USUARIO1</option>
+													<option value="5" >USUARIO2</option>
+												</select>
+											</div>
+
 										 </div> 
 
 
@@ -74,6 +90,7 @@
 				  				<th>Cliente</th>
 				  				<th>Forma de Pago</th>
 				  				<th>Importe</th>
+				  				<th>Usuario</th>
 								  
 				  				<th></th>
 				  				<th></th>
@@ -88,6 +105,8 @@
 				  				<td>{{ $recibo->cliente->nombre }} {{ $recibo->cliente->apellido}}</td>
 				  				<td>{{ $recibo->forma_pago}}</td>
 				  				<td>{{ $recibo->importe}}</td>
+				  				<td>{{ $recibo->user->name}}</td>
+
 								<td><a href="{{ route('recibos.show',$recibo->id)}}" class="btn btn-sm btn-primary">Ver</a></td>
 								@if(Auth::user()->isAdmin())
 				  				<td><!--<a href="{{ route('recibos.edit',$recibo->id)}}" class="btn btn-sm btn-primary">Editar</a>--></td>
