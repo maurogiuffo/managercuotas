@@ -17,6 +17,7 @@ body {
 .receipt-main {
   display: inline-block;
   width: 100%;
+   height: 800px;
   padding: 15px;
   font-size: 12px;
   border: 1px solid #000;
@@ -44,6 +45,11 @@ body {
 
 .receipt-section {
   margin-top: 10px;
+}
+
+.receipt-back {
+ position:absolute;
+    bottom:50px;
 }
 
 .receipt-footer {
@@ -177,7 +183,7 @@ p {
     <span class="text-large">{{ $recibo->importe}}</span>
 </div>
 
-<div class="receipt-section">
+<div class="receipt-back">
 
       
     <span>Sr Vecino</span>
