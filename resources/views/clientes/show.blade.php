@@ -13,25 +13,43 @@
 							
 								<table>
 									<tr>
-										<td>Nombre</td>
+										<td class="col-md-4 ">Nombre</td>
 										<td>{{ $cliente->nombre }}</td>
 									</tr>
 									<tr>
-										<td>Apellido</td>
+										<td class="col-md-4 ">Apellido</td>
 										<td>{{ $cliente->apellido }}</td>
 									</tr>
 									<tr>
-										<td>DNI</td>
+										<td class="col-md-4 ">DNI</td>
 										<td>{{ $cliente->dni }}</td>
 									</tr>	
 									<tr>
-										<td>Direccion</td>
+										<td class="col-md-4 ">Direccion</td>
 										<td>{{ $cliente->direccion }}</td>
 									</tr>	
 									<tr>
-										<td>Telefono</td>
+										<td class="col-md-4 ">Telefono</td>
 										<td>{{ $cliente->telefono }}</td>
-									</tr>	
+									</tr>
+									<tr>
+										<td class="col-md-4 ">Mail</td>
+										<td>{{ $cliente->mail }}</td>
+									</tr>
+									<tr>
+										<td class="col-md-4 ">Tipo de Cuota</td>
+										<td>
+											{{ $cliente->tipo_cuota}}
+										</td>
+									</tr>
+									<tr>
+										<td class="col-md-4 ">Observaciones</td>
+										<td><textarea name="observaciones" id="observaciones" rows="10" cols="50"  disabled>{{ $cliente->observaciones }}</textarea>
+										</td>
+									</tr>
+
+								</table>
+
 								</table>
 
 							

@@ -37,6 +37,10 @@
 										<td><input type="text" name="telefono" id="telefono" value="{{ $cliente->telefono }}"></td>
 									</tr>
 									<tr>
+										<td class="col-md-4 ">Mail</td>
+										<td><input type="text" name="mail" id="mail" value="{{ $cliente->mail }}"></td>
+									</tr>
+									<tr>
 										<td class="col-md-4 ">Tipo de Cuota</td>
 										<td>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO1" {{ $cliente->tipo_cuota == 'TIPO1' ? "checked" : "" }}>TIPO1<br>
@@ -46,7 +50,13 @@
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO5" {{ $cliente->tipo_cuota == 'TIPO5' ? "checked" : "" }}>TIPO5<br>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO6" {{ $cliente->tipo_cuota == 'TIPO6' ? "checked" : "" }}>TIPO6
 										</td>
-									</tr>										
+									</tr>
+									<tr>
+										<td class="col-md-4 ">Observaciones</td>
+										<td><textarea name="observaciones" id="observaciones" rows="10" cols="50">{{ $cliente->observaciones }}</textarea>
+										</td>
+									</tr>
+
 								</table>
 
 								<button  type="submit" class="btn btn-sm btn-primary">{{ __('Guardar') }}</button>	
