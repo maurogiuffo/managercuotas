@@ -83,20 +83,35 @@ class ClienteController extends Controller
         {
             $id=$cliente->id;
 
-            if($request->tipo_cuota =="TIPO1")
-            {
-                 $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe, cuotas_clientes.saldo = cuotas.importe where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
-            }
+            $numero ="";
 
             if($request->tipo_cuota =="TIPO2")
             {
-                 $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe2, cuotas_clientes.saldo = cuotas.importe2 where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
+                $numero ="2";
             }
 
             if($request->tipo_cuota =="TIPO3")
             {
-                 $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe3, cuotas_clientes.saldo = cuotas.importe3 where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
+                $numero ="3";
             }
+
+            if($request->tipo_cuota =="TIPO4")
+            {
+                $numero ="4";
+            }
+
+            if($request->tipo_cuota =="TIPO5")
+            {
+                $numero ="5";
+            }
+
+            if($request->tipo_cuota =="TIPO6")
+            {
+                $numero ="6";
+            }
+
+           $sql = "update cuotas_clientes inner join cuotas on cuotas_clientes.id_cuota=cuotas.id set cuotas_clientes.importe= cuotas.importe$numero, cuotas_clientes.saldo = cuotas.importe$numero where cuotas_clientes.id_cliente = $id  and cuotas_clientes.saldo = cuotas_clientes.importe and cuotas_clientes.saldo > 0";
+
         }
 
 

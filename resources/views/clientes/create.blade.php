@@ -39,7 +39,10 @@
 										<td>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO1">TIPO1<br>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO2">TIPO2<br>
-											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO3">TIPO3
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO3">TIPO3<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO4">TIPO4<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO5">TIPO5<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO6">TIPO6
 										</td>
 									</tr>	
 								</table>

@@ -41,7 +41,10 @@
 										<td>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO1" {{ $cliente->tipo_cuota == 'TIPO1' ? "checked" : "" }}>TIPO1<br>
 											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO2" {{ $cliente->tipo_cuota == 'TIPO2' ? "checked" : "" }}>TIPO2<br>
-											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO3" {{ $cliente->tipo_cuota == 'TIPO3' ? "checked" : "" }}>TIPO3
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO3" {{ $cliente->tipo_cuota == 'TIPO3' ? "checked" : "" }}>TIPO3<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO4" {{ $cliente->tipo_cuota == 'TIPO4' ? "checked" : "" }}>TIPO4<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO5" {{ $cliente->tipo_cuota == 'TIPO5' ? "checked" : "" }}>TIPO5<br>
+											<input type="radio" name="tipo_cuota" id="tipo_cuota" value="TIPO6" {{ $cliente->tipo_cuota == 'TIPO6' ? "checked" : "" }}>TIPO6
 										</td>
 									</tr>										
 								</table>

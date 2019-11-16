@@ -36,6 +36,18 @@
 										<td class="col-md-8 ">Importe 3</td>
 										<td><input type="text" name="importe3" id="importe3" value="{{ $cuota->importe3 }}"></td>
 									</tr>
+									<tr>
+										<td class="col-md-8 ">Importe 4</td>
+										<td><input type="text" name="importe4" id="importe4" value="{{ $cuota->importe4 }}"></td>
+									</tr>
+									<tr>
+										<td class="col-md-8 ">Importe 5</td>
+										<td><input type="text" name="importe5" id="importe5" value="{{ $cuota->importe5 }}"></td>
+									</tr>
+									<tr>
+										<td class="col-md-8 ">Importe 6</td>
+										<td><input type="text" name="importe6" id="importe6" value="{{ $cuota->importe6 }}"></td>
+									</tr>
 
 								</table>
 

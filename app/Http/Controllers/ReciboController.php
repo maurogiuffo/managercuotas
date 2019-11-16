@@ -74,7 +74,7 @@ class ReciboController extends Controller
         $recibos = $recibos->paginate(1000);
         $total = $total->sum('importe');
 
-        return view('recibos.index',compact('recibos','fechaInicial','fechaFinal','forma_pago','total'));  
+        return view('recibos.index',compact('recibos','fechaInicial','fechaFinal','forma_pago','id_usuario','total'));  
     }
 
 
@@ -169,6 +169,12 @@ class ReciboController extends Controller
                         $cuotacliente->importe = $cuota->importe2;
                     if($cliente->tipo_cuota == 'TIPO3')
                         $cuotacliente->importe = $cuota->importe3;
+                     if($cliente->tipo_cuota == 'TIPO4')
+                        $cuotacliente->importe = $cuota->importe4;
+                     if($cliente->tipo_cuota == 'TIPO5')
+                        $cuotacliente->importe = $cuota->importe5;
+                     if($cliente->tipo_cuota == 'TIPO6')
+                        $cuotacliente->importe = $cuota->importe6;
 
                      $cuotacliente->saldo = $cuotacliente->importe;
 
@@ -298,14 +304,25 @@ class ReciboController extends Controller
         $fechaInicial = date('Y-m-d');
         $fechaFinal = date('Y-m-d');
 
-        if(! is_null($request->fechaInicial) && ! empty($request->fechaInicial) && ! is_null($request->fechaFinal) || ! empty($request->fechaFinal))
+        if(! is_null($request->fechaInicial_impresion) && ! empty($request->fechaInicial_impresion) && ! is_null($request->fechaFinal_impresion) || ! empty($request->fechaFinal_impresion))
         {
-            $fechaInicial = $request->fechaInicial;
-            $fechaFinal = $request->fechaFinal;
+            $fechaInicial = $request->fechaInicial_impresion;
+            $fechaFinal = $request->fechaFinal_impresion;
         }
 
        
-        $forma_pago = $request->get('forma_pago');
+        $forma_pago = $request->get('forma_pago_impresion');
+
+        if(Auth::user()->isAdmin())
+        {
+            $id_usuario = $request->get('id_usuario_impresion');
+        }
+        else
+        {
+            $id_usuario = Auth::user()->id;
+        }
+
+        
 
         $recibos= Recibo::with('cliente')
             ->orderBy('id','desc')
@@ -318,6 +335,12 @@ class ReciboController extends Controller
         {
             $recibos = $recibos->where('forma_pago','like',"%$forma_pago%");
             $total = $total->where('forma_pago','like',"%$forma_pago%");
+        }
+
+        if($id_usuario != '')
+        {
+            $recibos = $recibos->where('id_user','=',$id_usuario);
+            $total = $total->where('id_user','=',$id_usuario);
         }
 
         $recibos = $recibos->paginate(1000);

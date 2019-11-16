@@ -35,10 +35,7 @@
 													<option value="CHEQUE">CHEQUE</option>
 												</select>
 												
-												<script type="text/javascript">
-													document.getElementById('forma_pago').value= {{$forma_pago}};
-												</script>
-
+											
 
 											</div>
 
@@ -134,9 +131,10 @@
 
 					<form method="POST" action="{{ route('recibos.imprimir_lista') }}" class="navbar-form pull-right">
 						@csrf
-		            	<input  id="fechaInicial" name="fechaInicial"  value="{{$fechaInicial}}"  type="hidden"/>
-		            	<input  id="fechaFinal" name="fechaFinal" value="{{$fechaFinal}}" type="hidden"/>
-		            	<input  id="forma_pago" name="forma_pago"  value="{{$forma_pago}}" type="hidden"/>
+		            	<input  id="fechaInicial_impresion" name="fechaInicial_impresion"  value="{{$fechaInicial}}"  type="hidden"/>
+		            	<input  id="fechaFinal_impresion" name="fechaFinal_impresion" value="{{$fechaFinal}}" type="hidden"/>
+		            	<input  id="forma_pago_impresion" name="forma_pago_impresion"  value="{{$forma_pago}}" type="hidden"/>
+		            	<input  id="id_usuario_impresion" name="id_usuario_impresion"  value="{{$id_usuario}}" type="hidden"/>
 		                <button type="submit" class="btn btn-sm btn-primary"> 
 		                    <span >Imprimir</span> 
 		                </button> 
@@ -154,3 +152,10 @@
 </div>
 
 @endsection
+
+@section('scripts')
+	<script type="text/javascript">
+		document.getElementById('forma_pago').value = '{{$forma_pago}}';
+	</script>
+
+@stop

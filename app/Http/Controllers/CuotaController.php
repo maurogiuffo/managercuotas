@@ -55,8 +55,12 @@ class CuotaController extends Controller
 
         if(
             $request->importe <=0 || is_nan($request->importe) || 
-            $request->importe2 <=0 || is_nan($request->importe2) || 
-            $request->importe3 <=0 || is_nan($request->importe3) )
+            $request->importe2 <=0 || is_nan($request->importe2)|| 
+            $request->importe3 <=0 || is_nan($request->importe3)||
+            $request->importe4 <=0 || is_nan($request->importe4)||
+            $request->importe5 <=0 || is_nan($request->importe5)||
+            $request->importe6 <=0 || is_nan($request->importe6)
+            )
         {
              return redirect()->route('cuotas.create')
                         ->with('info','Importe debe ser numero mayor que 0');    
@@ -76,6 +80,13 @@ class CuotaController extends Controller
             DB::statement($sql);
 
             $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe3,$cuota->importe3,now(),now() from clientes where tipo_cuota='TIPO3')";
+            DB::statement($sql);
+
+            $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe4,$cuota->importe4,now(),now() from clientes where tipo_cuota='TIPO4')";
+            DB::statement($sql);
+              $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe5,$cuota->importe5,now(),now() from clientes where tipo_cuota='TIPO5')";
+            DB::statement($sql);
+              $sql = "insert into cuotas_clientes (id_cliente,id_cuota,id_recibo,importe,saldo,created_at,updated_at)(select id,$cuota->id,0,$cuota->importe6,$cuota->importe6,now(),now() from clientes where tipo_cuota='TIPO6')";
             DB::statement($sql);
 
 
@@ -128,6 +139,21 @@ class CuotaController extends Controller
      */
     public function update(Request $request, Cuota $cuota)
     {
+
+        if(
+            $request->importe <=0 || is_nan($request->importe) || 
+            $request->importe2 <=0 || is_nan($request->importe2)|| 
+            $request->importe3 <=0 || is_nan($request->importe3)||
+            $request->importe4 <=0 || is_nan($request->importe4)||
+            $request->importe5 <=0 || is_nan($request->importe5)||
+            $request->importe6 <=0 || is_nan($request->importe6)
+            )
+        {
+             return redirect()->route('cuotas.edit',$cuota->id)
+                        ->with('info','Importe debe ser numero mayor que 0');    
+        }
+
+
         $cuota = Cuota::find($cuota->id);
         $cuota->fill($request->all());
         $cuota->save();

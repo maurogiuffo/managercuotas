@@ -61,7 +61,19 @@
 									<tr>
 										<td>Importe 3</td>
 										<td><input type="text" name="importe3" id="importe3" value=""></td>
-									</tr>	
+									</tr>
+									<tr>
+										<td>Importe 4</td>
+										<td><input type="text" name="importe4" id="importe4" value=""></td>
+									</tr>
+									<tr>
+										<td>Importe 5</td>
+										<td><input type="text" name="importe5" id="importe5" value=""></td>
+									</tr>
+									<tr>
+										<td>Importe 6</td>
+										<td><input type="text" name="importe6" id="importe6" value=""></td>
+									</tr>				
 									
 								</table>
 
